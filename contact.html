@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="contact, animal rescue, pet adoption, volunteer, donate, animal welfare, nonprofit, contact form, inquiry, paws for hope">
+    <meta name="description" content="Get in touch with Paws for Hope about pet adoption, volunteering, donations, or general inquiries. Send us a message and we’ll respond within 48 hours.">
+    <meta name="author" content="Paws for Hope">
+    <title>Contact - Paws for Hope</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="top-header">
+        <a href="index.html"><img src="logo.png" alt="Paws for Hope Logo" id="logo"></a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="adopt.html">Adopt</a></li>
+                <li><a href="petdetails.html">Pet Details</a></li>
+                <li><a href="get-involved.html">Get Involved</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1>Contact Us</h1>
+        <p class="hero-subtitle">
+            Ready to help a pet in need? Have questions about adoption or volunteering? 
+            We'd love to hear from you and help you get started on your journey with Paws for Hope.
+        </p>
+    </section>
+
+    <div class="content-container">
+        <!-- Contact Form and Info Grid -->
+        <div class="contact-grid">
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h2 class="form-title">Send Us a Message</h2>
+                <form id="contactForm" novalidate>
+                    <div class="form-group">
+                        <label for="name">Full Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required>
+                        <div class="error-message" id="nameError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="123-456-7890">
+                        <div class="error-message" id="phoneError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inquiryType">Inquiry Type <span class="required">*</span></label>
+                        <select id="inquiryType" name="inquiryType" required>
+                            <option value="">Please select...</option>
+                            <option value="Adoption">Adoption</option>
+                            <option value="Volunteer">Volunteer</option>
+                            <option value="Donation">Donation</option>
+                            <option value="General">General</option>
+                        </select>
+                        <div class="error-message" id="inquiryTypeError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message <span class="required">*</span></label>
+                        <textarea id="message" name="message" placeholder="Tell us how we can help you..." required></textarea>
+                        <div class="error-message" id="messageError"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h2 class="info-title">Get in Touch</h2>
+                
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-content">
+                        <h3>Our Location</h3>
+                        <p>1234 Pet Rescue Lane<br>Hopeville, MA 01234</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">📞</div>
+                    <div class="info-content">
+                        <h3>Phone Number</h3>
+                        <p>(555) 123-PAWS<br>Monday - Sunday: 9AM - 6PM</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">✉️</div>
+                    <div class="info-content">
+                        <h3>Email Address</h3>
+                        <p>info@pawsforhope.org<br>We respond within 48 hours</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">⏰</div>
+                    <div class="info-content">
+                        <h3>Adoption Hours</h3>
+                        <p>Weekdays: 10AM - 7PM<br>Weekends: 9AM - 5PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- About Section -->
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">
+                        <div class="logo-icon">🐾</div>
+                        <div class="logo-text">
+                            <h3>Paws for Hope</h3>
+                            <span>Animal Rescue & Adoption</span>
+                        </div>
+                    </a>
+                    <p>Dedicated to rescuing, rehabilitating, and rehoming pets in need across our community. Every animal deserves love, care, and a forever home where they can thrive.</p>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="adopt.html">Pet Adoption</a></li>
+                        <li><a href="get-involved.html">Foster Care</a></li>
+                        <li><a href="get-involved.html">Volunteer</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <span class="icon">📍</span>
+                        <span>1234 Pet Rescue Lane<br>Hopeville, MA 01234</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📞</span>
+                        <span>(555) 123-PAWS</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">✉️</span>
+                        <span>info@pawsforhope.org</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">⏰</span>
+                        <span>Mon-Sun: 9AM - 6PM</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 Paws for Hope. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            // Form validation using jQuery as specified
+            $('#contactForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                // Clear previous errors
+                $('.error-message').text('');
+                $('.form-group input, .form-group select, .form-group textarea').removeClass('error');
+                
+                let isValid = true;
+                
+                // Validate name (required)
+                const name = $('#name').val().trim();
+                if (!name) {
+                    $('#name').addClass('error');
+                    $('#nameError').text('Name is required.');
+                    isValid = false;
+                }
+                
+                // Validate email (required + regex)
+                const email = $('#email').val().trim();
+                const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+                if (!email) {
+                    $('#email').addClass('error');
+                    $('#emailError').text('Email is required.');
+                    isValid = false;
+                } else if (!emailRegex.test(email)) {
+                    $('#email').addClass('error');
+                    $('#emailError').text('Please enter a valid email address.');
+                    isValid = false;
+                }
+                
+                // Validate phone (optional, pattern match ###-###-####)
+                const phone = $('#phone').val().trim();
+                const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
+                if (phone && !phoneRegex.test(phone)) {
+                    $('#phone').addClass('error');
+                    $('#phoneError').text('Phone must be in format: 123-456-7890');
+                    isValid = false;
+                }
+                
+                // Validate inquiry type (required)
+                const inquiryType = $('#inquiryType').val();
+                if (!inquiryType) {
+                    $('#inquiryType').addClass('error');
+                    $('#inquiryTypeError').text('Please select an inquiry type.');
+                    isValid = false;
+                }
+                
+                // Validate message (required)
+                const message = $('#message').val().trim();
+                if (!message) {
+                    $('#message').addClass('error');
+                    $('#messageError').text('Message is required.');
+                    isValid = false;
+                }
+                
+                // Check if form is valid as specified in requirements
+                const valid = $('#name').val() && $('#email').val().match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/);
+                
+                if (!isValid || !valid) {
+                    alert('Please fill all required fields with a valid email.');
+                    return;
+                }
+                
+                // Success popup as specified
+                alert('Thanks for reaching out — we\'ll reply within 48 hours!');
+                this.reset();
+            });
+            
+            // Auto-format phone number
+            $('#phone').on('input', function() {
+                let value = $(this).val().replace(/\D/g, '');
+                if (value.length >= 6) {
+                    value = value.substring(0, 3) + '-' + value.substring(3, 6) + '-' + value.substring(6, 10);
+                } else if (value.length >= 3) {
+                    value = value.substring(0, 3) + '-' + value.substring(3);
+                }
+                $(this).val(value);
+            });
+        });
+    </script>
+</body>
+</html>

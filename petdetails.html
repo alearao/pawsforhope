@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="pet details, adoptable pets, dog details, cat details, animal rescue, pet adoption, vaccination status, apply to adopt, Paws for Hope">
+    <meta name="description" content="See detailed profiles for adoptable pets at Paws for Hope, including photos, age, vaccination status, and personality traits. Apply to adopt your perfect companion today.">
+    <meta name="author" content="Paws for Hope">
+    <title>Pet Details - Paws for Hope</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        :root {
+           --terracotta: #E07A5F;
+           --sage: #81B29A;
+           --cream: #F4F1DE;
+           --brown: #3D2C2E;
+           --honey: #F2CC8F;
+        }
+
+        /* General */
+        body { margin: 0; background-color: var(--cream); font-family: "Poppins", Arial, sans-serif; color: var(--brown); }
+
+        /* Header + Nav */
+        .top-header { background-color: var(--cream); border-bottom: 3px solid var(--sage); display:flex; align-items:center; justify-content:space-between; padding:12px 40px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        #logo { height: 60px; width: auto; }
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 24px; }
+        nav a { text-decoration: none; color: var(--brown); font-weight: 600; padding: 8px 12px; border-radius: 6px; transition: background-color 0.3s ease, color 0.3s ease; }
+        nav a:hover { background-color: var(--sage); color: #fff; }
+        nav a.active { background-color: var(--terracotta); color: #fff; }
+        @media (max-width: 768px) {
+           .top-header { flex-direction: column; align-items: flex-start; padding: 16px 24px; }
+           nav ul { flex-direction: column; width: 100%; gap: 12px; margin-top: 12px; }
+           nav a { display: block; width: 100%; text-align: left; }
+        }
+
+        /* Buttons */
+        .btn { padding: 8px 14px; border-radius: 6px; border: 1px solid var(--terracotta); background: var(--terracotta); color:#fff; cursor: pointer; text-decoration: none; display:inline-block; }
+        .btn.secondary { border-color: var(--sage); background: var(--sage); }
+        .btn:hover { filter: brightness(0.95); }
+
+        /* Details page extras */
+        .details-main { padding: 24px 40px; }
+        .pet-hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: start; }
+        .carousel { position: relative; background:#fff; border:1px solid #e6e6e6; border-radius:12px; overflow:hidden; }
+        .carousel__frame { width:100%; aspect-ratio: 4/3; overflow:hidden; }
+        .carousel__frame img { width:100%; height:100%; object-fit: cover; display:block; }
+        .carousel__nav { position:absolute; top:50%; transform: translateY(-50%); border:none; background: rgba(0,0,0,0.45); color:#fff; width:34px; height:34px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+        .carousel__nav.prev { left:8px; }
+        .carousel__nav.next { right:8px; }
+        .pet-summary h1 { margin: 0 0 8px 0; font-size: 28px; }
+        .chips { display:flex; flex-wrap:wrap; gap:8px; margin: 8px 0 12px; }
+        .chip { background: var(--honey); color: #3D2C2E; padding:4px 10px; border-radius: 999px; font-size: 13px; border: 1px solid rgba(0,0,0,0.06); }
+        .pet-facts { list-style:none; padding:0; margin:0 0 12px 0; display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 6px 12px; }
+        .pet-facts li { background:#fff; border:1px solid #e6e6e6; border-radius:8px; padding:8px 10px; }
+        .actions { margin-top: 8px; }
+        .related { margin-top: 28px; }
+        .related__row { display:flex; gap: 12px; overflow-x: auto; padding-bottom: 6px; }
+        .related__card { min-width: 220px; background:#fff; border:1px solid #e6e6e6; border-radius: 10px; overflow:hidden; cursor:pointer; text-decoration:none; color: inherit; }
+        .related__card img { width:100%; aspect-ratio: 4/3; object-fit:cover; display:block; }
+        .related__body { padding:10px; }
+        @media (max-width: 900px) { .pet-hero { grid-template-columns: 1fr; } }
+    
+    </style>
+</head>
+<body>
+    <header class="top-header">
+        <a href="index.html"><img src="logo.png" alt="Paws for Hope Logo" id="logo"></a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="adopt.html">Adopt</a></li>
+                <li><a href="petdetails.html" class="active">Pet Details</a></li>
+                <li><a href="get-involved.html">Get Involved</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <h1>Pet Details</h1>
+        <p class="mission-statement">
+            Learn more about this pet’s story, personality, and what makes them the perfect companion.
+        </p>
+    </section>
+
+    <main class="details-main">
+        <section class="pet-hero">
+            <div class="carousel">
+                <button class="carousel__nav prev" id="nav-prev" aria-label="Previous photo">&#10094;</button>
+                <div class="carousel__frame">
+                    <img id="hero-img" alt="Pet photo" src="" />
+                </div>
+                <button class="carousel__nav next" id="nav-next" aria-label="Next photo">&#10095;</button>
+            </div>
+            <div class="pet-summary">
+                <h1 id="pet-name">Loading…</h1>
+                <div id="pet-tags" class="chips"></div>
+                <ul class="pet-facts">
+                    <li><strong>Species:</strong> <span id="pet-species">—</span></li>
+                    <li><strong>Gender:</strong> <span id="pet-gender">—</span></li>
+                    <li><strong>Age:</strong> <span id="pet-age">—</span></li>
+                    <li><strong>Size:</strong> <span id="pet-size">—</span></li>
+                    <li><strong>Vaccinated:</strong> <span id="pet-vaccinated">—</span></li>
+                </ul>
+                <p id="pet-story">—</p>
+                <div class="actions">
+                    <a id="apply-btn" class="btn" href="#">Apply to Adopt</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="related" aria-label="Related pets">
+            <h2>Related Pets</h2>
+            <div class="related__row" id="related-row"></div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- About Section -->
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">
+                        <div class="logo-icon">🐾</div>
+                        <div class="logo-text">
+                            <h3>Paws for Hope</h3>
+                            <span>Animal Rescue & Adoption</span>
+                        </div>
+                    </a>
+                    <p>Dedicated to rescuing, rehabilitating, and rehoming pets in need across our community. Every animal deserves love, care, and a forever home where they can thrive.</p>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="adopt.html">Pet Adoption</a></li>
+                        <li><a href="get-involved.html">Foster Care</a></li>
+                        <li><a href="get-involved.html">Volunteer</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <span class="icon">📍</span>
+                        <span>1234 Pet Rescue Lane<br>Hopeville, MA 01234</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📞</span>
+                        <span>(555) 123-PAWS</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">✉️</span>
+                        <span>info@pawsforhope.org</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">⏰</span>
+                        <span>Mon-Sun: 9AM - 6PM</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 Paws for Hope. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Inline fallback for file:// usage; when served via HTTP, code will fetch json/pets.json instead -->
+    <script id="pets-data" type="application/json">[
+        {"id":1,"name":"Luna","species":"Cat","size":"Small","ageGroup":"Adult","ageYears":2,"gender":"Female","vaccinated":true,"shortBio":"Quiet nap buddy who loves window sunbeams.","fullBio":"Luna is a calm adult cat who enjoys quiet spaces and gentle playtime. She is litter-trained and friendly with respectful kids.","image":"./cat1.jpeg"},
+        {"id":2,"name":"Milo","species":"Cat","size":"Medium","ageGroup":"Young","ageYears":1,"gender":"Male","vaccinated":true,"shortBio":"Playful pup who learns fast.","fullBio":"Milo loves walks, basic training, and squeaky toys. He does well with an active family ready for kitten energy.","image":"./cat2.jpeg"},
+        {"id":3,"name":"Willow","species":"Dog","size":"Small","ageGroup":"Senior","ageYears":10,"gender":"Female","vaccinated":true,"shortBio":"Gentle senior who loves laps.","fullBio":"Willow is a sweet senior looking for a quiet home. She enjoys soft beds and regular brushing.","image":"./dog1.jpeg"},
+        {"id":4,"name":"Buddy","species":"Dog","size":"Large","ageGroup":"Adult","ageYears":4,"gender":"Male","vaccinated":true,"shortBio":"Friendly goofball who loves fetch.","fullBio":"Buddy enjoys long walks and backyard games. House-trained and eager to please.","image":"./dog2.jpg"},
+        {"id":5,"name":"Nala","species":"Dog","size":"Small","ageGroup":"Young","ageYears":0.8,"gender":"Female","vaccinated":true,"shortBio":"Curious puppy who purrs loudly.","fullBio":"Nala is a playful puppy ready to bond. She loves feather wands and treats.","image":"./dog3.avif"},
+        {"id":6,"name":"Rocky","species":"Dog","size":"Medium","ageGroup":"Adult","ageYears":3,"gender":"Male","vaccinated":false,"shortBio":"Smart boy who loves hikes.","fullBio":"Rocky is active and affectionate. He'll thrive with structure and daily exercise.","image":"./dog4.jpeg"}
+    ]</script>
+
+    <script>
+        const els = {
+            name: document.getElementById('pet-name'),
+            tags: document.getElementById('pet-tags'),
+            species: document.getElementById('pet-species'),
+            gender: document.getElementById('pet-gender'),
+            age: document.getElementById('pet-age'),
+            size: document.getElementById('pet-size'),
+            vaccinated: document.getElementById('pet-vaccinated'),
+            story: document.getElementById('pet-story'),
+            heroImg: document.getElementById('hero-img'),
+            prev: document.getElementById('nav-prev'),
+            next: document.getElementById('nav-next'),
+            apply: document.getElementById('apply-btn'),
+            relatedRow: document.getElementById('related-row'),
+        }
+
+        const state = { allPets: [], pet: null, images: [], idx: 0 }
+
+        function deriveTags(p) {
+            const tags = []
+            if (p.ageGroup === 'Young') tags.push('Playful')
+            if (p.ageGroup === 'Adult') tags.push('House-trained')
+            if (p.ageGroup === 'Senior') tags.push('Calm')
+            if (p.size) tags.push(p.size)
+            if (p.vaccinated) tags.push('Vaccinated')
+            return tags
+        }
+
+        function setHero(idx) {
+            if (!state.images.length) return
+            state.idx = (idx + state.images.length) % state.images.length
+            els.heroImg.src = state.images[state.idx]
+            els.prev.style.display = state.images.length > 1 ? 'flex' : 'none'
+            els.next.style.display = state.images.length > 1 ? 'flex' : 'none'
+        }
+
+        function renderPet(p) {
+            els.name.textContent = p.name
+            els.species.textContent = p.species
+            els.gender.textContent = p.gender
+            els.age.textContent = `${p.ageGroup} (${p.ageYears} yrs)`
+            els.size.textContent = p.size
+            els.vaccinated.textContent = p.vaccinated ? 'Yes' : 'No'
+            els.story.textContent = p.fullBio || p.shortBio || ''
+
+            // Images: support p.images array or fallback to p.image
+            const imgs = Array.isArray(p.images) && p.images.length ? p.images : [p.image].filter(Boolean)
+            state.images = imgs
+            setHero(0)
+
+            // Tags
+            els.tags.innerHTML = deriveTags(p).map(t => `<span class="chip">${t}</span>`).join('')
+
+            // Apply button
+            const q = new URLSearchParams({ pet: p.name }).toString()
+            els.apply.href = `contact.html?${q}`
+
+            // Related
+            const related = state.allPets.filter(x => x.id !== p.id && x.species === p.species).slice(0,3)
+            els.relatedRow.innerHTML = related.map(r => `
+                <a class="related__card" href="petDetails.html?id=${r.id}">
+                    <img alt="${r.name}" src="${r.image}" />
+                    <div class="related__body">
+                        <strong>${r.name}</strong><br/>
+                        <span class="tags">${r.species} • ${r.ageGroup}</span>
+                    </div>
+                </a>
+            `).join('')
+        }
+
+        function getParamPet(pets) {
+            const params = new URLSearchParams(location.search)
+            const id = Number(params.get('id'))
+            const name = params.get('pet')
+            let found = null
+            if (id) found = pets.find(p => p.id === id)
+            if (!found && name) found = pets.find(p => p.name.toLowerCase() === name.toLowerCase())
+            return found || pets[0] || null
+        }
+
+        async function init() {
+            // Prefer inline when opened as file://
+            if (location.protocol === 'file:') {
+                try {
+                    const raw = document.getElementById('pets-data')?.textContent?.trim()
+                    if (raw) state.allPets = JSON.parse(raw)
+                } catch (e) { console.warn('Inline fallback failed:', e) }
+            }
+            // Otherwise fetch JSON
+            if (!state.allPets.length) {
+                try {
+                    const res = await fetch('json/pets.json', { cache: 'no-store' })
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+                    state.allPets = await res.json()
+                } catch (e) { console.error('Failed to fetch pets.json', e) }
+            }
+
+            if (!state.allPets.length) {
+                document.querySelector('.details-main').innerHTML = '<div style="background:#fff;border:1px solid #e6e6e6;border-radius:10px;padding:16px;">Unable to load pet details. If you opened this file directly, please use a local server (e.g., VS Code Live Server) or keep the inline fallback.</div>'
+                return
+            }
+
+            state.pet = getParamPet(state.allPets)
+            if (!state.pet) {
+                document.querySelector('.details-main').innerHTML = '<div style="background:#fff;border:1px solid #e6e6e6;border-radius:10px;padding:16px;">Pet not found.</div>'
+                return
+            }
+            renderPet(state.pet)
+
+            els.prev.addEventListener('click', () => setHero(state.idx - 1))
+            els.next.addEventListener('click', () => setHero(state.idx + 1))
+        }
+        init()
+    </script>
+</body>
+</html>

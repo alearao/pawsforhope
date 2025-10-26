@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Browse adoptable dogs and cats at Paws for Hope. Find your perfect companion by filtering pets by species, size, and age. Meet loving animals waiting for their forever homes.">
+    <meta name="keywords" content="pet adoption, adopt dogs, adopt cats, adoptable pets, animal adoption, dog rescue, cat rescue, pet shelter, find pets, adopt animals, pet companions, forever homes">
+    <meta name="author" content="Paws for Hope">
+     <title>Adopt - Paws for Hope</title>
+     <link rel="stylesheet" href="styles.css">
+     <style>
+          @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+          :root {
+              --terracotta: #E07A5F;
+              --sage: #81B29A;
+              --cream: #F4F1DE;
+              --brown: #3D2C2E;
+              --honey: #F2CC8F;
+          }
+
+          /* General */
+          body { margin: 0; background-color: var(--cream); font-family: "Poppins", Arial, sans-serif; color: var(--brown); }
+
+          /* Header + Nav */
+          .top-header { background-color: var(--cream); border-bottom: 3px solid var(--sage); display:flex; align-items:center; justify-content:space-between; padding:12px 40px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+          #logo { height: 60px; width: auto; }
+          nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 24px; }
+          nav a { text-decoration: none; color: var(--brown); font-weight: 600; padding: 8px 12px; border-radius: 6px; transition: background-color 0.3s ease, color 0.3s ease; }
+          nav a:hover { background-color: var(--sage); color: #fff; }
+          nav a.active { background-color: var(--terracotta); color: #fff; }
+          @media (max-width: 768px) {
+              .top-header { flex-direction: column; align-items: flex-start; padding: 16px 24px; }
+              nav ul { flex-direction: column; width: 100%; gap: 12px; margin-top: 12px; }
+              nav a { display: block; width: 100%; text-align: left; }
+          }
+
+          /* Buttons */
+          .btn { padding: 8px 14px; border-radius: 6px; border: 1px solid var(--terracotta); background: var(--terracotta); color:#fff; cursor: pointer; text-decoration: none; display:inline-block; }
+          .btn.secondary { border-color: var(--sage); background: var(--sage); }
+          .btn:hover { filter: brightness(0.95); }
+
+          /* Adoption page */
+          .adopt-main { padding: 24px 40px; }
+          .intro h1 { margin: 0 0 8px 0; font-size: 28px; }
+          .intro p { margin: 0 0 16px 0; }
+
+          .filters { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: end; background: #fff; border: 1px solid var(--sage); border-radius: 10px; padding: 12px; margin-bottom: 16px; }
+          .filters label { display: grid; gap: 6px; font-weight: 600; }
+          .filters select { padding: 8px; border-radius: 6px; border: 1px solid #ccc; }
+
+          .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 340px)); justify-content: center; gap: 16px; }
+
+          .card { background: #fff; border: 1px solid #e6e6e6; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
+          .card__media { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; }
+          .card__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+          .card__body { padding: 12px; display: grid; gap: 8px; }
+          .card__title { margin: 0; font-size: 18px; }
+          .tags { color:#555; font-size: 14px; }
+          .card .btn { align-self: start; }
+
+          .load-more-wrap { text-align:center; margin-top: 16px; }
+
+          /* Modal */
+          .modal__backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.45); }
+          .modal__dialog { position: fixed; left:50%; top:50%; transform: translate(-50%,-50%); background:#fff; border-radius: 12px; width: min(560px, 92vw); max-height: 86vh; overflow:auto; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+          .modal__close { position:absolute; right:10px; top:6px; border:none; background:transparent; font-size: 28px; cursor:pointer; }
+          #modal-content { padding: 20px; }
+     </style>
+</head>
+<body>
+    <header class="top-header">
+        <a href="index.html"><img src="logo.png" alt="Paws for Hope Logo" id="logo"></a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="adopt.html" class="active">Adopt</a></li>
+                <li><a href="petdetails.html">Pet Details</a></li>
+                <li><a href="get-involved.html">Get Involved</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <h1>Adopt</h1>
+        <h2 class="mission-statement">
+            Meet the dogs and cats waiting for a loving home. Filter by age, size, or species to find your perfect match!
+        </h2>
+    </section>
+
+    <main class="adopt-main">
+        <!-- Intro header -->
+        <section class="intro">
+            <h1>Find Your New Best Friend</h1>
+            <p>Browse adoptable dogs and cats. Use the filters to narrow by species, size, or age group, then meet your match.</p>
+        </section>
+
+        <!-- Filter bar -->
+        <section class="filters" aria-label="Filters">
+            <label>
+                Species
+                <select id="filter-species">
+                    <option value="All">All</option>
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                </select>
+            </label>
+            <label>
+                Size
+                <select id="filter-size">
+                    <option value="All">All</option>
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                </select>
+            </label>
+            <label>
+                Age
+                <select id="filter-age">
+                    <option value="All">All</option>
+                    <option value="Young">Young</option>
+                    <option value="Adult">Adult</option>
+                    <option value="Senior">Senior</option>
+                </select>
+            </label>
+            <button id="reset-filters" class="btn">Reset</button>
+        </section>
+
+        <!-- Grid of cards -->
+        <section>
+            <div id="cards-grid" class="cards-grid" aria-live="polite"></div>
+            <div class="load-more-wrap">
+                <button id="load-more" class="btn secondary">Load More</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="pet-modal" class="modal" style="display:none;">
+        <div class="modal__backdrop"></div>
+        <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button class="modal__close" id="modal-close" aria-label="Close">×</button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+     <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- About Section -->
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">
+                        <div class="logo-icon">🐾</div>
+                        <div class="logo-text">
+                            <h3>Paws for Hope</h3>
+                            <span>Animal Rescue & Adoption</span>
+                        </div>
+                    </a>
+                    <p>Dedicated to rescuing, rehabilitating, and rehoming pets in need across our community. Every animal deserves love, care, and a forever home where they can thrive.</p>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="adopt.html">Pet Adoption</a></li>
+                        <li><a href="get-involved.html">Foster Care</a></li>
+                        <li><a href="get-involved.html">Volunteer</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <span class="icon">📍</span>
+                        <span>1234 Pet Rescue Lane<br>Hopeville, MA 01234</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📞</span>
+                        <span>(555) 123-PAWS</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">✉️</span>
+                        <span>info@pawsforhope.org</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">⏰</span>
+                        <span>Mon-Sun: 9AM - 6PM</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 Paws for Hope. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+        <!-- Pets data now external: json/pets.json -->
+        <!-- Fallback inline data for file:// usage (when fetch is blocked by the browser) -->
+        <script id="pets-data" type="application/json">[
+            {"id":1,"name":"Luna","species":"Cat","size":"Small","ageGroup":"Adult","ageYears":2,"gender":"Female","vaccinated":true,"shortBio":"Quiet nap buddy who loves window sunbeams.","fullBio":"Luna is a calm adult cat who enjoys quiet spaces and gentle playtime. She is litter-trained and friendly with respectful kids.","image":"./cat1.jpeg"},
+            {"id":2,"name":"Milo","species":"Cat","size":"Medium","ageGroup":"Young","ageYears":1,"gender":"Male","vaccinated":true,"shortBio":"Playful pup who learns fast.","fullBio":"Milo loves walks, basic training, and squeaky toys. He does well with an active family ready for kitten energy.","image":"./cat2.jpeg"},
+            {"id":3,"name":"Willow","species":"Dog","size":"Small","ageGroup":"Senior","ageYears":10,"gender":"Female","vaccinated":true,"shortBio":"Gentle senior who loves laps.","fullBio":"Willow is a sweet senior looking for a quiet home. She enjoys soft beds and regular brushing.","image":"./dog1.jpeg"},
+            {"id":4,"name":"Buddy","species":"Dog","size":"Large","ageGroup":"Adult","ageYears":4,"gender":"Male","vaccinated":true,"shortBio":"Friendly goofball who loves fetch.","fullBio":"Buddy enjoys long walks and backyard games. House-trained and eager to please.","image":"./dog2.jpg"},
+            {"id":5,"name":"Nala","species":"Dog","size":"Small","ageGroup":"Young","ageYears":0.8,"gender":"Female","vaccinated":true,"shortBio":"Curious puppy who purrs loudly.","fullBio":"Nala is a playful puppy ready to bond. She loves feather wands and treats.","image":"./dog3.avif"},
+            {"id":6,"name":"Rocky","species":"Dog","size":"Medium","ageGroup":"Adult","ageYears":3,"gender":"Male","vaccinated":false,"shortBio":"Smart boy who loves hikes.","fullBio":"Rocky is active and affectionate. He'll thrive with structure and daily exercise.","image":"./dog4.jpeg"}
+        ]</script>
+
+        <!-- Inline adopt logic (module-free) -->
+        <script>
+            const state = { allPets: [], filters: { species: 'All', size: 'All', age: 'All' }, visibleCount: 6 }
+            const els = {
+                grid: document.getElementById('cards-grid'),
+                species: document.getElementById('filter-species'),
+                size: document.getElementById('filter-size'),
+                age: document.getElementById('filter-age'),
+                reset: document.getElementById('reset-filters'),
+                loadMore: document.getElementById('load-more'),
+                modal: document.getElementById('pet-modal'),
+                modalContent: document.getElementById('modal-content'),
+                modalClose: document.getElementById('modal-close')
+            }
+
+            function applyFilters(pets, { species, size, age }) {
+                return pets
+                    .filter(p => species === 'All' ? true : p.species === species)
+                    .filter(p => size === 'All' ? true : p.size === size)
+                    .filter(p => age === 'All' ? true : p.ageGroup === age)
+            }
+
+            function cardTemplate(p) {
+                const tags = `${p.species} • ${p.ageYears} yrs • ${p.size}`
+                const imgSrc = p.image
+                return `
+                    <article class="card">
+                        <div class="card__media">
+                            <img alt="${p.name}" src="${imgSrc}" loading="lazy" />
+                        </div>
+                        <div class="card__body">
+                            <h3 class="card__title">${p.name}</h3>
+                            <div class="tags">${tags}</div>
+                            <p>${p.shortBio}</p>
+                            <a class="btn adopt-btn" href="petDetails.html?id=${p.id}" data-id="${p.id}">Adopt Me</a>
+                        </div>
+                    </article>
+                `
+            }
+
+            function renderCards(pets, { append = false } = {}) {
+                const html = pets.map(cardTemplate).join('')
+                if (append) {
+                    els.grid.insertAdjacentHTML('beforeend', html)
+                } else {
+                    els.grid.innerHTML = html
+                }
+            }
+
+            function refresh() {
+                const filtered = applyFilters(state.allPets, state.filters)
+                const slice = filtered.slice(0, state.visibleCount)
+                renderCards(slice)
+                els.loadMore.style.display = state.visibleCount < filtered.length ? 'inline-block' : 'none'
+            }
+
+            function openModal(pet) {
+                const vacc = pet.vaccinated ? 'Yes' : 'No'
+                els.modalContent.innerHTML = `
+                    <h2 id="modal-title">${pet.name}</h2>
+                    <img alt="${pet.name}" src="${pet.image}" style="width:100%; max-height:280px; object-fit:cover; border-radius:8px;" />
+                    <p style="margin-top:10px;">${pet.fullBio}</p>
+                    <ul>
+                        <li><strong>Gender:</strong> ${pet.gender}</li>
+                        <li><strong>Vaccinated:</strong> ${vacc}</li>
+                        <li><strong>Details:</strong> ${pet.species} • ${pet.size} • ${pet.ageGroup} (${pet.ageYears} yrs)</li>
+                    </ul>
+                    <button class="btn" id="contact-cta">Contact to Adopt</button>
+                `
+                window.$('#pet-modal').fadeIn(150)
+            }
+
+            function closeModal() { window.$('#pet-modal').fadeOut(150) }
+
+            function onGridClick(e) {
+                // Let the "Adopt Me" link navigate to petDetails.html?id=...
+                const link = e.target.closest('.adopt-btn')
+                if (link) return
+            }
+
+            function wireEvents() {
+                els.grid.addEventListener('click', onGridClick)
+                els.species.addEventListener('change', () => { state.filters.species = els.species.value; state.visibleCount = 6; refresh() })
+                els.size.addEventListener('change', () => { state.filters.size = els.size.value; state.visibleCount = 6; refresh() })
+                els.age.addEventListener('change', () => { state.filters.age = els.age.value; state.visibleCount = 6; refresh() })
+                els.reset.addEventListener('click', () => {
+                    state.filters = { species: 'All', size: 'All', age: 'All' }
+                    els.species.value = 'All'; els.size.value = 'All'; els.age.value = 'All'
+                    state.visibleCount = 6
+                    refresh()
+                })
+                els.loadMore.addEventListener('click', () => {
+                    const filtered = applyFilters(state.allPets, state.filters)
+                    const start = state.visibleCount
+                    state.visibleCount += 3
+                    const nextSlice = filtered.slice(start, state.visibleCount)
+                    renderCards(nextSlice, { append: true })
+                    els.loadMore.style.display = state.visibleCount < filtered.length ? 'inline-block' : 'none'
+                })
+                els.modalClose.addEventListener('click', closeModal)
+                els.modal.addEventListener('click', (e) => { if (e.target.classList.contains('modal__backdrop')) closeModal() })
+            }
+
+            // Bootstrap: prefer external fetch; fall back to inline JSON for file:// usage
+            async function init(){
+                let loaded = false
+
+                // If opened as a local file, try the inline fallback first (fetch is usually blocked on file://)
+                if (location.protocol === 'file:') {
+                    try {
+                        const raw = document.getElementById('pets-data')?.textContent?.trim()
+                        if (raw) {
+                            state.allPets = JSON.parse(raw)
+                            loaded = true
+                        }
+                    } catch (e) {
+                        console.warn('Inline pets-data fallback failed to parse:', e)
+                    }
+                }
+
+                // Otherwise (or if fallback not used), try fetching the JSON file
+                if (!loaded) {
+                    try {
+                        const res = await fetch('json/pets.json', { cache: 'no-store' })
+                        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+                        state.allPets = await res.json()
+                        loaded = true
+                    } catch (e) {
+                        console.error('Failed to load json/pets.json', e)
+                    }
+                }
+
+                wireEvents()
+                if (loaded) {
+                    refresh()
+                } else {
+                    els.grid.innerHTML = '<div style="background:#fff;border:1px solid #e6e6e6;border-radius:10px;padding:16px;">Unable to load pets. If you opened this file directly, please use a local server (e.g., VS Code Live Server) or keep the inline fallback.</div>'
+                    els.loadMore.style.display = 'none'
+                }
+            }
+            init()
+        </script>
+</body>
+</html>

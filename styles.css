@@ -1,0 +1,552 @@
+/* ====== Paws for Hope Brand Colors ====== */
+:root {
+    --terracotta: #E07A5F;
+    --sage: #81B29A;
+    --cream: #F4F1DE;
+    --brown: #3D2C2E;
+    --honey: #F2CC8F;
+}
+
+/* ====== General Layout ====== */
+body {
+    margin: 0;
+    background-color: var(--cream);
+    font-family: "Poppins", Arial, sans-serif;
+    color: var(--brown);
+}
+
+/* ====== Header ====== */
+.top-header {
+    background-color: var(--cream);
+    border-bottom: 3px solid var(--sage);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 40px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Logo */
+#logo {
+    height: 60px;
+    width: auto;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 24px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--brown);
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover + Active States */
+nav a:hover {
+    background-color: var(--sage);
+    color: white;
+}
+
+nav a.active {
+    background-color: var(--terracotta);
+    color: white;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 400px) {
+    .top-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 24px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+        margin-top: 12px;
+    }
+
+    nav a {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+}
+
+/* ====== Hero Section ====== */
+.hero-section {
+            background: var(--sage);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .mission-statement {
+            font-size: 1.4rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--brown);
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background-color: var(--terracotta);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+/* ====== Content Container ====== */
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 80px 40px;
+}
+
+/* ====== Contact Grid ====== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-bottom: 60px;
+}
+
+/* ====== Contact Form ====== */
+.contact-form {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.form-title {
+    text-align: center;
+    color: var(--terracotta);
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--brown);
+    font-size: 1rem;
+}
+
+.required {
+    color: var(--terracotta);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid var(--sage);
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--terracotta);
+    box-shadow: 0 0 0 4px rgba(224, 122, 95, 0.1);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+    border-color: #dc3545;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 5px;
+    min-height: 20px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--terracotta);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(129, 178, 154, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* ====== Contact Info ====== */
+.contact-info {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.info-title {
+    text-align: center;
+    color: var(--sage);
+    font-size: 2rem;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: var(--cream);
+    border-radius: 15px;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.info-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.info-icon {
+    font-size: 2.5rem;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.info-content h3 {
+    margin: 0 0 8px 0;
+    color: var(--terracotta);
+    font-size: 1.3rem;
+}
+
+.info-content p {
+    margin: 0;
+    color: var(--brown);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* ====== Responsive Design ====== */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .content-container {
+        padding: 0 20px 40px 20px;
+    }
+
+    .contact-form,
+    .contact-info {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero-section {
+        padding: 60px 20px;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .form-title,
+    .info-title {
+        font-size: 1.5rem;
+    }
+
+    .info-icon {
+        font-size: 2rem;
+    }
+}
+
+
+.main-footer {
+    background: linear-gradient(135deg, var(--brown) 0%, #2a1f20 100%);
+    color: white;
+    padding: 60px 0 20px;
+    margin-top: 80px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+/* Footer Logo Section */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.footer-logo .logo-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--sage), var(--terracotta));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-size: 1.8rem;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.footer-logo:hover .logo-icon {
+    transform: scale(1.05);
+}
+
+.footer-logo .logo-text h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+.footer-logo .logo-text span {
+    color: var(--sage);
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.footer-about p {
+    color: #ccc;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+/* Footer Links */
+.footer-section h4 {
+    color: var(--sage);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.footer-section ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 12px;
+}
+
+.footer-section ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.footer-section ul li a:hover {
+    color: var(--sage);
+}
+
+/* Contact Info */
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+.contact-item .icon {
+    width: 20px;
+    margin-right: 12px;
+    font-size: 1.1rem;
+    color: var(--sage);
+    flex-shrink: 0;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    border-top: 1px solid #444;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-bottom p {
+    color: #999;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-bottom-links a {
+    color: #999;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+    color: var(--sage);
+}
+
+/* ====== RESPONSIVE DESIGN ====== */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+    
+    .footer-container {
+        padding: 0 20px;
+    }
+    
+    .main-footer {
+        padding: 40px 0 20px;
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 400px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .footer-bottom-links {
+        justify-content: center;
+    }
+    
+    .footer-logo .logo-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .footer-logo .logo-text h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .footer-container {
+        padding: 0 15px;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    .contact-item .icon {
+        margin-bottom: 5px;
+        margin-right: 0;
+    }
+}
+
+

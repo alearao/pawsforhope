@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Home - Paws for Hope</title>
+        <meta name="description" content="Paws for Hope rescues, rehabilitates, and rehomes dogs and cats. Explore adoptable pets, volunteer or foster, donate, and help animals find loving homes.">
+        <meta name="keywords" content="animal rescue, pet adoption, adopt a pet, dog adoption, cat adoption, volunteer, foster, donate, animal shelter, Paws for Hope">
+        <meta name="author" content="Paws for Hope">
+        <link rel="stylesheet" href="styles.css">
+
+		<!-- interal stylesheet -->
+		<style>
+		:root {
+		   --terracotta: #E07A5F;
+		   --sage: #81B29A;
+		   --cream: #F4F1DE;
+		   --brown: #3D2C2E;
+		   --honey: #F2CC8F;
+		}
+
+
+		  /* layout */
+		  body {
+			  margin: 0;
+			  background-image: url('background.jpg');
+			  background-size: cover;
+			  background-position: center;
+			  background-repeat: no-repeat;
+			  font-family: "Poppins", Arial, sans-serif;
+			  color: var(--brown);
+		  }
+
+
+		/* header */
+		.top-header {
+		   background-color: var(--cream);
+		   border-bottom: 3px solid var(--sage);
+		   display: flex;
+		   align-items: center;
+		   justify-content: space-between;
+		   padding: 12px 40px;
+		   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+		   position: sticky;
+		   top: 0;
+		   z-index: 100;
+		}
+
+
+		/* Logo */
+		#logo {
+		   height: 60px;
+		   width: auto;
+		}
+
+
+		/* Navigation */
+		nav ul {
+		   list-style: none;
+		   margin: 0;
+		   padding: 0;
+		   display: flex;
+		   gap: 24px;
+		}
+
+
+		nav a {
+		   text-decoration: none;
+		   color: var(--brown);
+		   font-weight: 600;
+		   padding: 8px 12px;
+		   border-radius: 6px;
+		   transition: background-color 0.3s ease, color 0.3s ease;
+		}
+
+
+		/* Hover + Active States */
+		nav a:hover {
+		   background-color: var(--sage);
+		   color: white;
+		}
+
+
+		nav a.active {
+		   background-color: var(--terracotta);
+		   color: white;
+		}
+
+
+		/* ====== Responsive ====== */
+		@media (max-width: 768px) {
+		   .top-header {
+		       flex-direction: column;
+		       align-items: flex-start;
+		       padding: 16px 24px;
+		   }
+
+
+		   nav ul {
+		       flex-direction: column;
+		       width: 100%;
+		       gap: 12px;
+		       margin-top: 12px;
+		   }
+
+
+		   nav a {
+		       display: block;
+		       width: 100%;
+		       text-align: left;
+		   }
+		}
+
+
+		/* page-specific styles */
+		
+			.hero-section {
+					background-color: var(--sage);
+					color: white;
+					padding: 80px 20px;
+					text-align: center;
+					margin-bottom: 60px;
+				}
+
+			.hero-section h1 {
+					font-size: 3.5rem;
+					font-weight: 700;
+					margin-bottom: 20px;
+					text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+			}
+
+			.mission-statement {
+					font-size: 1.25rem;
+					font-weight: 300;
+					max-width: 900px;
+					margin: 0 auto 24px auto;
+					line-height: 1.6;
+					text-shadow: 1px 1px 2px rgba(0,0,0,0.12);
+			}
+
+			.hero-ctas { display:flex; gap:12px; justify-content:center; margin-top:18px; }
+			.hero-ctas a { text-decoration:none; }
+			.btn-primary { background: var(--terracotta); color:white; padding:12px 20px; border-radius:8px; font-weight:700; }
+			.btn-secondary { background: rgba(255,255,255,0.12); color:white; padding:12px 20px; border-radius:8px; font-weight:700; border:2px solid rgba(255,255,255,0.12); }
+
+			.content-container { max-width:1200px; margin:0 auto; padding: 0 24px; }
+			.section { margin-bottom: 64px; }
+			.section-title { font-size:2rem; font-weight:700; color:var(--brown); text-align:center; margin-bottom:24px; position:relative; }
+			.section-title::after { content:''; display:block; width:100px; height:4px; background-color:var(--terracotta); margin:12px auto; border-radius:2px; }
+
+			/* Mission / impact three columns */
+			.impact-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:20px; margin-top:24px; }
+			.impact-card { background: linear-gradient(145deg,#fff,#f8f8f8); border-radius:14px; padding:22px; text-align:center; box-shadow:0 8px 20px rgba(0,0,0,0.06); border:2px solid var(--sage); }
+			.impact-icon { font-size:36px; display:block; margin-bottom:12px; }
+			.impact-number { font-size:2.2rem; font-weight:700; color:var(--terracotta); }
+			.impact-label { font-weight:600; color:var(--brown); margin:8px 0; }
+
+			/* Featured pets */
+			.pets-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:20px; }
+			.pet-card { background:white; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); border:2px solid transparent; transition:transform .18s ease, border-color .18s ease; }
+			.pet-card:hover { transform:translateY(-6px); border-color:var(--sage); }
+			.pet-photo { width:100%; height:200px; object-fit:cover; display:block; }
+			.pet-body { padding:14px; }
+			.pet-name { font-size:1.25rem; font-weight:700; color:var(--brown); }
+			.pet-age { color:#666; margin-bottom:10px; }
+
+			/* Modal */
+			.modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; z-index:2000; }
+			.modal { background:white; max-width:560px; width:94%; border-radius:12px; padding:20px; box-shadow:0 20px 60px rgba(0,0,0,0.25); }
+			.modal img { width:100%; height:300px; object-fit:cover; border-radius:8px; }
+			.modal .close { margin-top:12px; display:inline-block; padding:8px 12px; background:var(--terracotta); color:white; border-radius:8px; text-decoration:none; }
+
+			/* testimonial */
+			.testimonial { background: linear-gradient(135deg,#fff,#fbfbfb); border-radius:12px; padding:20px; box-shadow:0 6px 18px rgba(0,0,0,0.06); max-width:800px; margin:0 auto; font-style:italic; }
+			.testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:20px; margin-top:20px; }
+			.testimonial-card { background: linear-gradient(135deg,#fff,#fbfbfb); border-radius:12px; padding:18px; box-shadow:0 6px 18px rgba(0,0,0,0.06); font-style:normal; }
+			.testimonial-quote { font-style: italic; color: #333; margin-bottom:10px; }
+			.testimonial-author { font-weight:700; color: var(--brown); }
+
+			@media (max-width:480px){
+				.hero-section h1 { font-size:2rem; }
+				.hero-section { padding:48px 12px; }
+			}
+		</style>
+	</head>
+	<body>
+
+        <!-- header -->
+    <header class="top-header">
+        <a href="index.html"><img src="logo.png" alt="Paws for Hope Logo" id="logo"></a>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="adopt.html">Adopt</a></li>
+                <li><a href="petdetails.html">Pet Details</a></li>
+                <li><a href="get-involved.html">Get Involved</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+		<!-- hero section -->
+		<section class="hero-section">
+			<div class="content-container">
+				<h1>Give a Best Friend a Second Chance.</h1>
+				<p class="mission-statement">Paws for Hope rescues, rehabilitates, and re-homes dogs and cats.</p>
+				<div class="hero-ctas">
+					<a class="btn-primary" href="adopt.html">Adopt Now</a>
+					<a class="btn-secondary" href="donate.html">Donate</a>
+				</div>
+			</div>
+		</section>
+
+		<main class="content-container">
+
+			<!-- misson section -->
+			<section class="section" id="mission">
+				<h2 class="section-title">Our Mission & Impact</h2>
+				<div class="impact-grid">
+					<div class="impact-card">
+						<div class="impact-icon">🐾</div>
+						<div class="impact-number">Rescue</div>
+						<div class="impact-label">Rescue</div>
+						<div class="impact-description">We save animals from neglect, surrender, and other dangerous situations.</div>
+					</div>
+					<div class="impact-card">
+						<div class="impact-icon">❤️</div>
+						<div class="impact-number">Rehabilitate</div>
+						<div class="impact-label">Rehabilitate</div>
+						<div class="impact-description">Medical care, training, and love to get them ready for forever homes.</div>
+					</div>
+					<div class="impact-card">
+						<div class="impact-icon">🏡</div>
+						<div class="impact-number">Rehome</div>
+						<div class="impact-label">Rehome</div>
+						<div class="impact-description">Matching pets with families — over <strong>450 pets</strong> saved in 2024.</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Featured pets -->
+			<section class="section" id="featured">
+				<h2 class="section-title">Meet Our Stars</h2>
+				<div id="pets" class="pets-grid">
+					<!-- JS will populate cards here from pets.json -->
+				</div>
+			</section>
+
+			<!-- Testimonials -->
+			<section class="section" id="testimonials">
+				<h2 class="section-title">Testimonials</h2>
+				<div class="testimonial-grid">
+				  <div class="testimonial-card">
+				    <div class="testimonial-quote">“Adopting Milo changed our family's life!”</div>
+				    <div class="testimonial-author">— Sarah K.</div>
+				  </div>
+				  <div class="testimonial-card">
+				    <div class="testimonial-quote">“The team at Paws for Hope were so supportive — Teddy is the sweetest addition to our home.”</div>
+				    <div class="testimonial-author">— Jasmine R.</div>
+				  </div>
+				  <div class="testimonial-card">
+				    <div class="testimonial-quote">“We can't imagine life without Luna. Adoption was seamless and heartwarming.”</div>
+				    <div class="testimonial-author">— Marco D.</div>
+				  </div>
+				</div>
+			</section>
+            
+		</main>
+        
+
+		<!-- modal placeholder -->
+		<div id="modalRoot" style="display:none;"></div>
+        <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- About Section -->
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">
+                        <div class="logo-icon">🐾</div>
+                        <div class="logo-text">
+                            <h3>Paws for Hope</h3>
+                            <span>Animal Rescue & Adoption</span>
+                        </div>
+                    </a>
+                    <p>Dedicated to rescuing, rehabilitating, and rehoming pets in need across our community. Every animal deserves love, care, and a forever home where they can thrive.</p>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="adopt.html">Pet Adoption</a></li>
+                        <li><a href="get-involved.html">Foster Care</a></li>
+                        <li><a href="get-involved.html">Volunteer</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <span class="icon">📍</span>
+                        <span>1234 Pet Rescue Lane<br>Hopeville, MA 01234</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📞</span>
+                        <span>(555) 123-PAWS</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">✉️</span>
+                        <span>info@pawsforhope.org</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">⏰</span>
+                        <span>Mon-Sun: 9AM - 6PM</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 Paws for Hope. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+		<script>
+			// pets array
+			const pets = [
+				{ name: 'Milo', age: '2 years', image: 'puppy1.jpeg', bio: 'Friendly, playful, good with kids. Loves walks and cuddles.' },
+				{ name: 'Luna', age: '1 year', image: 'puppy2.jpg', bio: 'Calm and gentle. Looking for a quiet home.' },
+				{ name: 'Biscuit', age: '3 years', image: 'puppy3.jpg', bio: 'Energetic and smart—would thrive with an active family.' }
+			];
+
+			function renderPets(){
+				const container = document.getElementById('pets');
+				container.innerHTML = '';
+				pets.slice(0,3).forEach((p, idx) => {
+					const card = document.createElement('article');
+					card.className = 'pet-card';
+					card.innerHTML = `
+						<img class="pet-photo" src="${p.image}" alt="${p.name}">
+						<div class="pet-body">
+							<div class="pet-name">${p.name}</div>
+							<div class="pet-age">Age: ${p.age}</div>
+							<button data-idx="${idx}" class="btn-primary meet-btn">Meet ${p.name}</button>
+						</div>
+					`;
+					container.appendChild(card);
+
+					card.querySelector('.meet-btn').addEventListener('click', ()=> openModal(p));
+				});
+			}
+            //modal for pets
+			function openModal(pet){
+				const root = document.getElementById('modalRoot');
+				root.style.display = '';
+				root.innerHTML = `
+					<div class="modal-backdrop" onclick="closeModal()">
+						<div class="modal" onclick="event.stopPropagation()">
+							<img src="${pet.image}" alt="${pet.name}">
+							<h3 style="margin-top:12px">${pet.name} — ${pet.age}</h3>
+							<p style="color:#444">${pet.bio}</p>
+							<a class="close" href="#" onclick="closeModal();return false;">Close</a>
+						</div>
+						</div>
+				`;
+			}
+
+			function closeModal(){
+				const root = document.getElementById('modalRoot');
+				root.style.display = 'none';
+				root.innerHTML = '';
+			}
+
+			// initialize modal
+			renderPets();
+		</script>
+	</body>
+</html>
+

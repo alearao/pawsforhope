@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Discover ways to get involved with Paws for Hope through volunteering, fostering, and community events. Sign up, explore opportunities, and help pets find loving homes.">
+  <meta name="keywords" content="volunteer, foster, animal rescue, pet adoption, volunteer opportunities, foster program, nonprofit, community events, get involved, Paws for Hope">
+  <meta name="author" content="Paws for Hope">
+  <title>Paws for Hope — Get Involved</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <!--internal stylesheet -->
+  <style>
+  :root {
+     --terracotta: #E07A5F;
+     --sage: #81B29A;
+     --cream: #F4F1DE;
+     --brown: #3D2C2E;
+     --honey: #F2CC8F;
+  }
+
+  body {
+     margin: 0;
+     background-color: var(--cream);
+     font-family: "Poppins", Arial, sans-serif;
+     color: var(--brown);
+     -webkit-font-smoothing:antialiased;
+  }
+
+  .top-header {
+     background-color: var(--cream);
+     border-bottom: 3px solid var(--sage);
+     display: flex;
+     align-items: center;
+     justify-content: flex-start;
+     padding: 12px 24px;
+     box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+     position: sticky;
+     top: 0;
+     z-index: 100;
+  }
+
+  #logo { height: 56px; width: auto; }
+
+  .content-container { max-width:1200px; margin:0 auto; padding: 0 24px; }
+  .section { margin-bottom: 64px; }
+  .section-title { font-size:2rem; font-weight:700; color:var(--brown); text-align:center; margin-bottom:24px; position:relative; }
+  .section-title::after { content:''; display:block; width:100px; height:4px; background-color:var(--terracotta); margin:12px auto; border-radius:2px; }
+
+  /* hero section */
+  .hero-section { background-color: var(--sage); color: white; padding: 80px 20px; text-align: center; margin-bottom: 40px; }
+  .hero-section h1 { font-size: 3rem; margin:0 0 12px 0; }
+  .hero-section p { margin:0 0 18px 0; font-size:1.15rem; }
+  .hero-ctas { display:flex; gap:12px; justify-content:center; margin-top:10px; }
+  .btn-primary { background: var(--terracotta); color:white; padding:12px 18px; border-radius:8px; font-weight:700; text-decoration:none; }
+  .btn-secondary { background: rgba(255,255,255,0.12); color:white; padding:12px 18px; border-radius:8px; font-weight:700; text-decoration:none; border:2px solid rgba(255,255,255,0.12); }
+
+  .top-header { background-color: var(--cream); border-bottom: 3px solid var(--sage); display:flex; align-items:center; justify-content:space-between; padding:12px 40px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+          #logo { height: 60px; width: auto; }
+          nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 24px; }
+          nav a { text-decoration: none; color: var(--brown); font-weight: 600; padding: 8px 12px; border-radius: 6px; transition: background-color 0.3s ease, color 0.3s ease; }
+          nav a:hover { background-color: var(--sage); color: #fff; }
+          nav a.active { background-color: var(--terracotta); color: #fff; }
+          @media (max-width: 768px) {
+              .top-header { flex-direction: column; align-items: flex-start; padding: 16px 24px; }
+              nav ul { flex-direction: column; width: 100%; gap: 12px; margin-top: 12px; }
+              nav a { display: block; width: 100%; text-align: left; }
+  }
+
+  /* column layout */
+  .two-col { display:grid; grid-template-columns: 1fr 1fr; gap:28px; align-items:start; }
+  .info-card { background: white; border-radius:12px; padding:22px; box-shadow:0 8px 20px rgba(0,0,0,0.06); border:2px solid transparent; }
+  .info-card h3 { margin-top:0; color:var(--brown); }
+  .steps { margin-top:12px; }
+  .steps li { margin-bottom:8px; color:#444; }
+
+  /* contact form */
+  .form-card { background: linear-gradient(145deg,#fff,#f8f8f8); border-radius:12px; padding:20px; box-shadow:0 8px 20px rgba(0,0,0,0.06); }
+  label { display:block; margin-bottom:6px; font-weight:600; color:var(--brown); }
+  input[type=text], input[type=email], textarea, select { width:100%; padding:10px 12px; border-radius:8px; border:1px solid #ddd; margin-bottom:12px; font-size:1rem; }
+  textarea { min-height:120px; resize:vertical; }
+  .submit-row { display:flex; gap:12px; align-items:center; }
+  .btn-ghost { background:transparent; border:2px solid var(--sage); padding:10px 14px; border-radius:8px; color:var(--sage); font-weight:700; text-decoration:none; }
+
+  /* Small helpers */
+  .muted { color:#666; }
+  .opps-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+
+  /* Responsive */
+  @media (max-width:900px){ .two-col { grid-template-columns:1fr; } }
+  @media (max-width:480px){ .hero-section { padding:48px 12px; } .hero-section h1{font-size:2rem;} }
+
+  /* fade-in on scroll */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: all 600ms ease; will-change: opacity, transform; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  /* foster gallery */
+  .foster-gallery { display:flex; gap:12px; margin-top:12px; }
+  .foster-item { background: #fff; border-radius:10px; padding:12px; box-shadow:0 6px 16px rgba(0,0,0,0.06); flex:1; text-align:center; }
+  .foster-item .thumb { font-size:44px; display:block; margin-bottom:8px; }
+
+  /* events list */
+  .events-list { list-style:none; padding:0; margin:0; display:grid; gap:10px; }
+  .event-card { background:white; border-radius:10px; padding:12px; box-shadow:0 6px 16px rgba(0,0,0,0.04); display:flex; justify-content:space-between; align-items:center; }
+  .cta-block { background: linear-gradient(90deg, rgba(129,178,154,0.06), rgba(224,122,95,0.03)); padding:28px; border-radius:12px; text-align:center; margin:28px 0; }
+  .cta-block .cta-buttons { display:flex; gap:12px; justify-content:center; margin-top:12px; }
+  </style>
+</head>
+<body>
+  <header class="top-header">
+        <a href="index.html"><img src="logo.png" alt="Paws for Hope Logo" id="logo"></a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="adopt.html">Adopt</a></li>
+                <li><a href="petdetails.html">Pet Details</a></li>
+                <li><a href="get-involved.html" class="active">Get Involved</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+  
+  <section class="hero-section">
+    <div class="content-container">
+      <h1>Get Involved — Volunteer or Foster</h1>
+      <p>Join our team of volunteers and foster families to help save and rehome more pets. Training and support provided.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="contact.html#volunteer">Volunteer</a>
+        <a class="btn-secondary" href="contact.html#foster">Foster</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="content-container">
+
+    <section id="overview" class="section">
+      <h2 class="section-title">How You Can Help</h2>
+      <div class="two-col">
+        <div class="info-card">
+          <h3 id="volunteer" class="fade-in">Volunteer Opportunities</h3>
+          <p class="muted fade-in">Volunteering is a rewarding way to help animals and meet like-minded people. Tasks include walking dogs, socializing cats, cleaning, assisting at adoption events, and supporting transport. Volunteers gain training, experience, and the satisfaction of helping animals find homes.</p>
+          <ul class="steps fade-in">
+            <li><strong>Dog walking & enrichment:</strong> daily walks and playtime.</li>
+            <li><strong>Cleaning & care:</strong> shelter upkeep and feeding.</li>
+            <li><strong>Event support:</strong> adoption booths and outreach.</li>
+            <li><strong>Transport:</strong> vet runs and pet transfers.</li>
+            <li><strong>Admin & media:</strong> photos, listings, and social posts.</li>
+          </ul>
+          <p class="fade-in">Time commitment: flexible — from one-off events to weekly shifts. All volunteers receive orientation and support.</p>
+          <a class="btn-ghost fade-in" href="contact.html#volunteer">Sign Up to Volunteer</a>
+        </div>
+
+        <div class="info-card">
+          <h3 id="foster" class="fade-in">Fostering Pets</h3>
+          <p class="muted fade-in">Fostering provides an essential bridge between rescue and adoption — a safe, temporary home that lets pets recover, socialize, and show their true personalities. Medical costs and supplies are covered, and our team supports you throughout the placement.</p>
+          <blockquote class="fade-in" style="margin-top:12px; padding:12px; background:#fff8f4; border-left:4px solid var(--terracotta); border-radius:8px;">
+            "Fostering Luna changed our lives — watching her blossom from shy to playful and then find a forever home was incredible." — Jamie, foster parent
+          </blockquote>
+
+          <div class="foster-gallery fade-in" aria-hidden="false">
+            <div class="foster-item">
+              <span class="thumb">🐶</span>
+              <div><strong>Luna</strong><div class="muted">Placed 2024</div></div>
+            </div>
+            <div class="foster-item">
+              <span class="thumb">🐱</span>
+              <div><strong>Whisk</strong><div class="muted">Placed 2025</div></div>
+            </div>
+            <div class="foster-item">
+              <span class="thumb">🐾</span>
+              <div><strong>Rufus</strong><div class="muted">Placed 2025</div></div>
+            </div>
+          </div>
+
+          <ol class="steps fade-in">
+            <li>Apply and complete a quick orientation.</li>
+            <li>Match with a pet based on your home and experience.</li>
+            <li>Receive supplies and veterinary care instructions.</li>
+            <li>Help socialize the pet and prepare them for adoption.</li>
+          </ol>
+          <p class="fade-in">Average foster stay: 2–8 weeks (varies by pet).</p>
+          <a class="btn-ghost fade-in" href="contact.html#foster">Apply to foster</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="events" class="section fade-in">
+      <h2 class="section-title">Upcoming Events</h2>
+      <p class="muted">Join us at these upcoming events — great opportunities to volunteer, meet pets, or help out.</p>
+      <ul id="eventsList" class="events-list" aria-live="polite">
+        <!-- events rendered by JS -->
+      </ul>
+    </section>
+
+    <section id="opportunities" class="section">
+      <h2 class="section-title">Opportunities & Quick Info</h2>
+      <div class="opps-grid">
+        <div class="info-card"><h4>Transport</h4><p class="muted">Help with vet runs and event deliveries.</p></div>
+        <div class="info-card"><h4>Weekend Events</h4><p class="muted">Staff adoption tables and meet families.</p></div>
+        <div class="info-card"><h4>Home Visits</h4><p class="muted">Help with meet-and-greets and home checks.</p></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2 class="section-title">Volunteer / Foster Sign-up</h2>
+      <div class="form-card">
+        <form id="involveForm">
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" required>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required>
+
+          <label for="role">I'm interested in</label>
+          <select id="role" name="role">
+            <option>Volunteer</option>
+            <option>Foster</option>
+            <option>Both</option>
+          </select>
+
+          <label for="message">Tell us a bit about your availability / experience (optional)</label>
+          <textarea id="message" name="message" placeholder="e.g., evenings & weekends, experience with dogs, etc."></textarea>
+
+          <div class="submit-row">
+            <button class="btn-primary" type="submit">Submit</button>
+            <a class="btn-ghost" href="donate.html">Donate instead</a>
+          </div>
+        </form>
+        <div id="formResult" style="display:none; margin-top:12px; font-weight:700; color:var(--sage);"></div>
+      </div>
+    </section>
+
+    <section class="cta-block fade-in">
+      <h2>Ready to get involved?</h2>
+      <p class="muted">Volunteer, foster, or support our work — every action helps.</p>
+      <div class="cta-buttons">
+        <a class="btn-primary" href="contact.html#volunteer">Volunteer</a>
+        <a class="btn-secondary" href="donate.html">Donate</a>
+      </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- About Section -->
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">
+                        <div class="logo-icon">🐾</div>
+                        <div class="logo-text">
+                            <h3>Paws for Hope</h3>
+                            <span>Animal Rescue & Adoption</span>
+                        </div>
+                    </a>
+                    <p>Dedicated to rescuing, rehabilitating, and rehoming pets in need across our community. Every animal deserves love, care, and a forever home where they can thrive.</p>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="adopt.html">Pet Adoption</a></li>
+                        <li><a href="get-involved.html">Foster Care</a></li>
+                        <li><a href="get-involved.html">Volunteer</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <span class="icon">📍</span>
+                        <span>1234 Pet Rescue Lane<br>Hopeville, MA 01234</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📞</span>
+                        <span>(555) 123-PAWS</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">✉️</span>
+                        <span>info@pawsforhope.org</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">⏰</span>
+                        <span>Mon-Sun: 9AM - 6PM</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 Paws for Hope. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // Simple Event constructor (home-grown)
+    function Event(name, date, location){
+      this.name = name;
+      this.date = date; // ISO string yyyy-mm-dd
+      this.location = location;
+    }
+
+    // Sample events array
+    const events = [
+      new Event('Adoption Fair', '2025-11-08', 'Hopeville Park'),
+      new Event('Volunteer Orientation', '2025-11-15', 'Paws HQ'),
+      new Event('Fundraiser & Bake Sale', '2025-12-06', 'Main Street Plaza')
+    ];
+
+    function renderEvents(){
+      const $list = $('#eventsList');
+      $list.empty();
+      events.forEach(function(ev){
+        const dateObj = new Date(ev.date + 'T00:00:00');
+        const dateStr = dateObj.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+        const $li = $('<li>').addClass('event-card');
+        const $left = $('<div>').html('<strong>' + ev.name + '</strong><div class="muted">' + dateStr + ' • ' + ev.location + '</div>');
+        $li.append($left);
+        $list.append($li);
+      });
+    }
+
+    // fade-in on scroll using jQuery
+    $(document).ready(function(){
+      renderEvents();
+
+      function checkFade(){
+        $('.fade-in').each(function(){
+          const $el = $(this);
+          if($el.hasClass('visible')) return;
+          const top = $el.offset().top;
+          const winTop = $(window).scrollTop();
+          const winH = $(window).height();
+          if(top < winTop + winH - 60){
+            $el.addClass('visible');
+          }
+        });
+      }
+
+      // initial reveal for elements in view
+      checkFade();
+      $(window).on('scroll resize', checkFade);
+
+      // keep the form submission behavior (with nicer jQuery hooks)
+      $('#involveForm').on('submit', function(e){
+        e.preventDefault();
+        const data = {
+          name: $('#name').val().trim(),
+          email: $('#email').val().trim(),
+          role: $('#role').val(),
+          message: $('#message').val().trim()
+        };
+        if(!data.name || !data.email){
+          alert('Please provide name and email.');
+          return;
+        }
+        const result = $('#formResult');
+        result.text('Thanks ' + data.name + '! We received your ' + data.role + ' request. We\'ll be in touch at ' + data.email + '.');
+        result.show();
+        $(this)[0].reset();
+        console.log('Get involved submission:', data);
+      });
+    });
+  </script>
+
+</body>
+</html>

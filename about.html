@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Paws for Hope's mission to rescue, rehabilitate, and rehome pets in need. Discover our history, impact, and dedicated team working to find forever homes for animals.">
+    <meta name="keywords" content="animal rescue, pet adoption, animal shelter, pet rescue, dog adoption, cat adoption, animal welfare, volunteer opportunities, foster care, pet rehabilitation, animal sanctuary, rescue organization">
+    <meta name="author" content="Paws for Hope">
+    <title>About - Paws for Hope</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ====== About Page Specific Styles --> MOVE INTO STYLESHEET ====== */
+        .hero-section {
+            background: var(--sage);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .mission-statement {
+            font-size: 1.4rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--brown);
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background-color: var(--terracotta);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* History Timeline - Unordered list styling */
+        .history-timeline {
+            list-style: disc;
+            padding-left: 40px;
+            margin-top: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .history-item {
+            padding: 8px 0;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--brown);
+        }
+
+        .history-year {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--terracotta);
+            margin-right: 5px;
+        }
+
+        /* Impact Numbers - Three column grid */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .impact-card {
+            background: linear-gradient(145deg, white, #f8f8f8);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 3px solid var(--sage);
+            transition: all 0.3s ease;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border-color: var(--terracotta);
+        }
+
+        .impact-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--terracotta);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .impact-label {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--brown);
+            margin-bottom: 10px;
+        }
+
+        .impact-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* Team Section - Multi-column grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--sage);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sage), var(--terracotta));
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .team-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--brown);
+            margin-bottom: 8px;
+        }
+
+        .team-role {
+            font-size: 1.1rem;
+            color: var(--terracotta);
+            font-weight: 500;
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 400px) {
+            .hero-section {
+                padding: 60px 20px;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .mission-statement {
+                font-size: 1.2rem;
+            }
+
+            .content-container {
+                padding: 0 20px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .impact-number {
+                font-size: 3rem;
+            }
+
+            .history-timeline,
+            .impact-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .mission-statement {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <header class="top-header">
+        <a href="index.html"><img src="logo.png" alt="Paws for Hope Logo" id="logo"></a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="adopt.html">Adopt</a></li>
+                <li><a href="petdetails.html">Pet Details</a></li>
+                <li><a href="get-involved.html">Get Involved</a></li>
+                <li><a href="about.html" class = "active">About</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Mission Statement -->
+    <section class="hero-section">
+        <h1>About Paws for Hope</h1>
+        <p class="mission-statement">
+            At Paws for Hope, our mission is to rescue, rehabilitate, and rehome pets in need across our community. 
+            We believe every animal deserves love, care, and a forever home where they can thrive.
+        </p>
+    </section>
+
+    <div class="content-container">
+        <!-- History Timeline Section -->
+        <section class="section">
+            <h2 class="section-title">Our Journey</h2>
+            <ul class="history-timeline">
+                <li class="history-item">
+                    <span class="history-year">2018</span> – Founded Paws for Hope with a small team of dedicated volunteers and a vision to transform animal rescue in our community.
+                </li>
+                <li class="history-item">
+                    <span class="history-year">2019</span> – Established our first foster network, enabling us to care for more animals while they awaited their forever homes.
+                </li>
+                <li class="history-item">
+                    <span class="history-year">2021</span> – Opened our new state-of-the-art shelter facility with modern veterinary care and comfortable living spaces for our rescued pets.
+                </li>
+                <li class="history-item">
+                    <span class="history-year">2023</span> – Launched our community education programs, teaching responsible pet ownership and animal welfare awareness.
+                </li>
+                <li class="history-item">
+                    <span class="history-year">2024</span> – Celebrated our 1,000th successful adoption, marking a major milestone in our mission to find loving homes for pets in need.
+                </li>
+                <li class="history-item">
+                    <span class="history-year">Today</span> – Continuing to grow our impact with new partnerships, expanded services, and an unwavering commitment to animal welfare.
+                </li>
+            </ul>
+        </section>
+
+        <!-- Impact Numbers Section -->
+        <section class="section">
+            <h2 class="section-title">Our Impact</h2>
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <span class="impact-number">1,240</span>
+                    <div class="impact-label">Pets Adopted</div>
+                    <div class="impact-description">Loving animals successfully placed in forever homes across our community</div>
+                </div>
+                <div class="impact-card">
+                    <span class="impact-number">850</span>
+                    <div class="impact-label">Pets Rescued</div>
+                    <div class="impact-description">Animals saved from shelters, streets, and difficult situations this year alone</div>
+                </div>
+                <div class="impact-card">
+                    <span class="impact-number">2,400</span>
+                    <div class="impact-label">Volunteer Hours</div>
+                    <div class="impact-description">Dedicated community members contributing their time and love monthly</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="section">
+            <h2 class="section-title">Meet Our Team</h2>
+            <div class="team-grid" id="team-container">
+                <!-- Team members will be populated by JavaScript -->
+            </div>
+        </section>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- About Section -->
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">
+                        <div class="logo-icon">🐾</div>
+                        <div class="logo-text">
+                            <h3>Paws for Hope</h3>
+                            <span>Animal Rescue & Adoption</span>
+                        </div>
+                    </a>
+                    <p>Dedicated to rescuing, rehabilitating, and rehoming pets in need across our community. Every animal deserves love, care, and a forever home where they can thrive.</p>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="adopt.html">Pet Adoption</a></li>
+                        <li><a href="get-involved.html">Foster Care</a></li>
+                        <li><a href="get-involved.html">Volunteer</a></li>
+                        <li><a href="#">Pet Training</a></li>
+                        <li><a href="#">Medical Care</a></li>
+                        <li><a href="#">Community Events</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <span class="icon">📍</span>
+                        <span>1234 Pet Rescue Lane<br>Hopeville, MA 01234</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📞</span>
+                        <span>(555) 123-PAWS</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">✉️</span>
+                        <span>info@pawsforhope.org</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">⏰</span>
+                        <span>Mon-Sun: 9AM - 6PM</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 Paws for Hope. All rights reserved.</p>
+                <div class="footer-bottom-links"></div>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        //team members array
+        const teamMembers = [
+            {
+                name: "Alea Rao",
+                role: "Executive Director",
+                initials: "AR"
+            },
+            {
+                name: "Joshua Guirao",
+                role: "Chief Veterinarian",
+                initials: "JG"
+            },
+            {
+                name: "Sofia Alvazzi",
+                role: "Adoption Coordinator",
+                initials: "SA"
+            },
+            {
+                name: "Kabir Goklani",
+                role: "Volunteer Manager",
+                initials: "KG"
+            }
+        ];
+
+        //function to render team members
+        function renderTeamMembers() {
+            const teamContainer = document.getElementById('team-container');
+            
+            const teamHTML = teamMembers.map(member => `
+                <div class="team-card">
+                    <div class="team-avatar">${member.initials}</div>
+                    <div class="team-name">${member.name}</div>
+                    <div class="team-role">${member.role}</div>
+                </div>
+            `).join('');
+            
+            teamContainer.innerHTML = teamHTML;
+        }
+
+        //initialize team section when page loads
+        document.addEventListener('DOMContentLoaded', renderTeamMembers);
+
+
+    </script>
+</body>
+</html>

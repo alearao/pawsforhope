@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="donate, animal rescue, pet adoption, support, fundraising, nonprofit, charity, paws for hope, animal welfare">
+    <meta name="description" content="Support Paws for Hope with a donation to help rescue, provide medical care, and find loving homes for animals in need. Every contribution makes a difference.">
+    <meta name="author" content="Paws for Hope">
+    <title>Donate - Paws for Hope</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ====== Donate Page Internal Styles ====== */
+        
+        /* CSS Variables for consistency */
+        :root {
+            --terracotta: #E07A5F;
+            --sage: #81B29A;
+            --cream: #F4F1DE;
+            --brown: #3D2C2E;
+            --honey: #F2CC8F;
+        }
+
+        /* Page Background */
+        body {
+            background-color: var(--cream);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: var(--sage);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin: 0 0 20px 0;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Content Container */
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px 80px 40px;
+        }
+
+        /* Donation Grid */
+        .donation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        /* Impact Section */
+        .impact-section {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 3px solid var(--sage);
+        }
+
+        .impact-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--brown);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .impact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 12px;
+            border-left: 5px solid var(--terracotta);
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .impact-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .impact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--sage);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .impact-content h3 {
+            margin: 0 0 8px 0;
+            color: var(--terracotta);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .impact-content p {
+            margin: 0;
+            color: var(--brown);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Donation Form */
+        .donation-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 3px solid var(--terracotta);
+        }
+
+        .form-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--brown);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .amount-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .amount-btn {
+            padding: 15px;
+            border: 2px solid var(--sage);
+            background-color: white;
+            color: var(--brown);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+
+        .amount-btn:hover {
+            background-color: var(--sage);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .amount-btn.selected {
+            background-color: var(--terracotta);
+            border-color: var(--terracotta);
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--brown);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--cream);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Poppins', Arial, sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--sage);
+            box-shadow: 0 0 0 3px rgba(129, 178, 154, 0.2);
+        }
+
+        .required {
+            color: var(--terracotta);
+            font-weight: bold;
+        }
+
+        .donate-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', Arial, sans-serif;
+            margin-top: 10px;
+        }
+
+        .donate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(224, 122, 95, 0.4);
+        }
+
+        .donate-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Thank You Popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            margin: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border: 4px solid var(--sage);
+        }
+
+        .popup-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--terracotta);
+        }
+
+        .popup-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--brown);
+            margin-bottom: 20px;
+        }
+
+        .popup-message {
+            font-size: 1.2rem;
+            color: var(--brown);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .popup-close {
+            background: var(--sage);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+
+        .popup-close:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(129, 178, 154, 0.4);
+        }
+
+        /* Other Amount Input */
+        .other-amount {
+            display: none;
+        }
+
+        .other-amount.show {
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .donation-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-section {
+                padding: 60px 20px;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .content-container {
+                padding: 0 20px;
+            }
+
+            .donation-form,
+            .impact-section {
+                padding: 30px 20px;
+            }
+
+            .amount-buttons {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .popup-content {
+                padding: 40px 30px;
+                margin: 10px;
+            }
+
+            .popup-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .form-title,
+            .impact-title {
+                font-size: 1.7rem;
+            }
+
+            .amount-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .impact-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .popup-content {
+                padding: 30px 20px;
+            }
+
+            .popup-title {
+                font-size: 1.8rem;
+            }
+
+            .popup-icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="top-header">
+        <a href="index.html"><img src="logo.png" alt="Paws for Hope Logo" id="logo"></a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="adopt.html">Adopt</a></li>
+                <li><a href="petdetails.html">Pet Details</a></li>
+                <li><a href="get-involved.html">Get Involved</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="donate.html" class="active">Donate</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1>Make a Difference</h1>
+        <p class="hero-subtitle">
+            Your generous donation helps us rescue, care for, and find loving homes for animals in need. 
+            Every contribution, no matter the size, makes a meaningful impact in an animal's life.
+        </p>
+    </section>
+
+    <div class="content-container">
+        <!-- Donation Grid -->
+        <div class="donation-grid">
+            <!-- Impact Information -->
+            <div class="impact-section">
+                <h2 class="impact-title">Your Impact</h2>
+                
+                <div class="impact-item">
+                    <div class="impact-content">
+                        <h3>$25 Donation</h3>
+                        <p>Provides a week of nutritious meals for a rescued pet, helping them regain strength and health.</p>
+                    </div>
+                </div>
+
+                <div class="impact-item">
+                    <div class="impact-content">
+                        <h3>$50 Donation</h3>
+                        <p>Covers essential vaccinations and basic medical care for a newly rescued animal.</p>
+                    </div>
+                </div>
+
+                <div class="impact-item">
+                    <div class="impact-content">
+                        <h3>$100 Donation</h3>
+                        <p>Sponsors a full health check-up and helps prepare a pet for their forever home.</p>
+                    </div>
+                </div>
+
+                <div class="impact-item">
+                    <div class="impact-content">
+                        <h3>$200+ Donation</h3>
+                        <p>Supports our comprehensive rescue program including emergency medical treatment.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donation Form -->
+            <div class="donation-form">
+                <h2 class="form-title">Make Your Donation</h2>
+                
+                <form id="donationForm">
+                    <!-- Amount Selection -->
+                    <div class="form-group">
+                        <label>Select Donation Amount <span class="required">*</span></label>
+                        <div class="amount-buttons">
+                            <button type="button" class="amount-btn" data-amount="25">$25</button>
+                            <button type="button" class="amount-btn" data-amount="50">$50</button>
+                            <button type="button" class="amount-btn" data-amount="100">$100</button>
+                            <button type="button" class="amount-btn" data-amount="200">$200</button>
+                            <button type="button" class="amount-btn" data-amount="500">$500</button>
+                            <button type="button" class="amount-btn" data-amount="other">Other</button>
+                        </div>
+                    </div>
+
+                    <!-- Other Amount Input -->
+                    <div class="form-group other-amount" id="otherAmount">
+                        <label for="customAmount">Enter Custom Amount <span class="required">*</span></label>
+                        <input type="number" id="customAmount" name="customAmount" placeholder="Enter amount" min="1">
+                    </div>
+
+                    <!-- Donor Information -->
+                    <div class="form-group">
+                        <label for="donorName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="donorName" name="donorName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="donorEmail">Email Address <span class="required">*</span></label>
+                        <input type="email" id="donorEmail" name="donorEmail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="donationType">Donation Type <span class="required">*</span></label>
+                        <select id="donationType" name="donationType" required>
+                            <option value="">Please select...</option>
+                            <option value="one-time">One-Time Donation</option>
+                            <option value="monthly">Monthly Recurring</option>
+                            <option value="annual">Annual Recurring</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="donate-btn">Donate Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thank You Popup -->
+    <div class="popup-overlay" id="thankYouPopup">
+        <div class="popup-content">
+            <div class="popup-icon">🎉</div>
+            <h2 class="popup-title">Thank You!</h2>
+            <p class="popup-message">
+                Your generous donation will help us continue our mission of rescuing and caring for animals in need. 
+                You'll receive a confirmation email shortly with your donation details.
+            </p>
+            <button class="popup-close" onclick="closePopup()">Continue</button>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- About Section -->
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">
+                        <div class="logo-icon">🐾</div>
+                        <div class="logo-text">
+                            <h3>Paws for Hope</h3>
+                            <span>Animal Rescue & Adoption</span>
+                        </div>
+                    </a>
+                    <p>Dedicated to rescuing, rehabilitating, and rehoming pets in need across our community. Every animal deserves love, care, and a forever home where they can thrive.</p>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="adopt.html">Pet Adoption</a></li>
+                        <li><a href="get-involved.html">Foster Care</a></li>
+                        <li><a href="get-involved.html">Volunteer</a></li>
+                        <li><a href="#">Pet Training</a></li>
+                        <li><a href="#">Medical Care</a></li>
+                        <li><a href="#">Community Events</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <span class="icon">📍</span>
+                        <span>1234 Pet Rescue Lane<br>Hopeville, MA 01234</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📞</span>
+                        <span>(555) 123-PAWS</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">✉️</span>
+                        <span>info@pawsforhope.org</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">⏰</span>
+                        <span>Mon-Sun: 9AM - 6PM</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 Paws for Hope. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Amount button selection
+        document.querySelectorAll('.amount-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove selected class from all buttons
+                document.querySelectorAll('.amount-btn').forEach(btn => {
+                    btn.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked button
+                this.classList.add('selected');
+                
+                // Show/hide other amount input
+                const otherAmount = document.getElementById('otherAmount');
+                if (this.dataset.amount === 'other') {
+                    otherAmount.classList.add('show');
+                    document.getElementById('customAmount').required = true;
+                } else {
+                    otherAmount.classList.remove('show');
+                    document.getElementById('customAmount').required = false;
+                    document.getElementById('customAmount').value = '';
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('donationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get selected amount
+            const selectedButton = document.querySelector('.amount-btn.selected');
+            const customAmount = document.getElementById('customAmount').value;
+            const donorName = document.getElementById('donorName').value.trim();
+            const donorEmail = document.getElementById('donorEmail').value.trim();
+            const donationType = document.getElementById('donationType').value;
+            
+            // Validate form
+            if (!selectedButton) {
+                alert('Please select a donation amount.');
+                return;
+            }
+            
+            if (selectedButton.dataset.amount === 'other' && (!customAmount || customAmount <= 0)) {
+                alert('Please enter a valid custom amount.');
+                return;
+            }
+            
+            if (!donorName || !donorEmail || !donationType) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(donorEmail)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Show thank you popup
+            showPopup();
+            
+            // Reset form
+            this.reset();
+            document.querySelectorAll('.amount-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            document.getElementById('otherAmount').classList.remove('show');
+        });
+
+        // Show popup
+        function showPopup() {
+            document.getElementById('thankYouPopup').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        // Close popup
+        function closePopup() {
+            document.getElementById('thankYouPopup').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close popup when clicking outside
+        document.getElementById('thankYouPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePopup();
+            }
+        });
+
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closePopup();
+            }
+        });
+    </script>
+</body>
+</html>
