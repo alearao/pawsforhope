@@ -3,10 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Browse adoptable dogs and cats at Paws for Hope. Find your perfect companion by filtering pets by species, size, and age. Meet loving animals waiting for their forever homes.">
-    <meta name="keywords" content="pet adoption, adopt dogs, adopt cats, adoptable pets, animal adoption, dog rescue, cat rescue, pet shelter, find pets, adopt animals, pet companions, forever homes">
-    <meta name="author" content="Paws for Hope">
-     <title>Adopt - Paws for Hope</title>
+     <title>Find Your New Best Friend</title>
      <link rel="stylesheet" href="styles.css">
      <style>
           @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
@@ -36,9 +33,40 @@
           }
 
           /* Buttons */
-          .btn { padding: 8px 14px; border-radius: 6px; border: 1px solid var(--terracotta); background: var(--terracotta); color:#fff; cursor: pointer; text-decoration: none; display:inline-block; }
+          /* Make buttons slightly more compact and add smooth transitions */
+          .btn {
+              padding: 6px 10px;
+              border-radius: 8px;
+              border: 1px solid var(--terracotta);
+              background: var(--terracotta);
+              color: #fff;
+              cursor: pointer;
+              text-decoration: none;
+              display: inline-block;
+              transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease, filter 160ms ease;
+              will-change: transform, box-shadow;
+          }
           .btn.secondary { border-color: var(--sage); background: var(--sage); }
-          .btn:hover { filter: brightness(0.95); }
+          .btn:hover {
+              filter: none;
+              transform: translateY(-3px);
+              box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+          }
+
+          /* Specific styling for the 'Adopt Me' button inside cards: keep it compact and anchor it to the bottom-right */
+          .adopt-btn {
+              padding: 6px 10px; /* slightly larger for better tap targets */
+              font-size: 13px;
+              line-height: 1.1;
+              white-space: nowrap;
+              width: auto;
+              display: inline-block;
+              border-radius: 8px;
+              margin-top: auto; /* push the button to the bottom of the card body */
+              align-self: flex-end; /* right-align within the card body */
+              box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+              transition: transform 140ms ease, box-shadow 140ms ease;
+          }
 
           /* Adoption page */
           .adopt-main { padding: 24px 40px; }
@@ -54,10 +82,10 @@
           .card { background: #fff; border: 1px solid #e6e6e6; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
           .card__media { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; }
           .card__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
-          .card__body { padding: 12px; display: grid; gap: 8px; }
+          .card__body { padding: 12px; display: flex; flex-direction: column; gap: 8px; min-height: 140px; }
           .card__title { margin: 0; font-size: 18px; }
           .tags { color:#555; font-size: 14px; }
-          .card .btn { align-self: start; }
+          .card .btn { align-self: flex-end; }
 
           .load-more-wrap { text-align:center; margin-top: 16px; }
 
