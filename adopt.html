@@ -8,6 +8,7 @@
      <style>
           @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+          /* color palette */
           :root {
               --terracotta: #E07A5F;
               --sage: #81B29A;
@@ -17,81 +18,55 @@
           }
 
           /* General */
-          body { margin: 0; background-color: var(--cream); font-family: "Poppins", Arial, sans-serif; color: var(--brown); }
+          body { background-color: var(--cream); font-family: "Poppins", Arial, sans-serif; color: var(--brown); }
 
           /* Header + Nav */
-          .top-header { background-color: var(--cream); border-bottom: 3px solid var(--sage); display:flex; align-items:center; justify-content:space-between; padding:12px 40px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-          #logo { height: 60px; width: auto; }
-          nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 24px; }
-          nav a { text-decoration: none; color: var(--brown); font-weight: 600; padding: 8px 12px; border-radius: 6px; transition: background-color 0.3s ease, color 0.3s ease; }
-          nav a:hover { background-color: var(--sage); color: #fff; }
-          nav a.active { background-color: var(--terracotta); color: #fff; }
-          @media (max-width: 768px) {
-              .top-header { flex-direction: column; align-items: flex-start; padding: 16px 24px; }
-              nav ul { flex-direction: column; width: 100%; gap: 12px; margin-top: 12px; }
-              nav a { display: block; width: 100%; text-align: left; }
-          }
+          .top-header { background-color: var(--cream); border-bottom: 3px solid var(--sage); display:flex; align-items:center; justify-content:space-between; padding:12px 40px; }
 
           /* Buttons */
-          /* Make buttons slightly more compact and add smooth transitions */
           .btn {
               padding: 6px 10px;
               border-radius: 8px;
-              border: 1px solid var(--terracotta);
               background: var(--terracotta);
               color: #fff;
               cursor: pointer;
-              text-decoration: none;
-              display: inline-block;
-              transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease, filter 160ms ease;
-              will-change: transform, box-shadow;
           }
           .btn.secondary { border-color: var(--sage); background: var(--sage); }
-          .btn:hover {
-              filter: none;
-              transform: translateY(-3px);
-              box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-          }
 
-          /* Specific styling for the 'Adopt Me' button inside cards: keep it compact and anchor it to the bottom-right */
+          /* "styling for the adopt button" */
           .adopt-btn {
-              padding: 6px 10px; /* slightly larger for better tap targets */
+              padding: 6px 10px;
               font-size: 13px;
               line-height: 1.1;
-              white-space: nowrap;
               width: auto;
-              display: inline-block;
               border-radius: 8px;
-              margin-top: auto; /* push the button to the bottom of the card body */
-              align-self: flex-end; /* right-align within the card body */
-              box-shadow: 0 6px 14px rgba(0,0,0,0.06);
-              transition: transform 140ms ease, box-shadow 140ms ease;
+              margin-top: auto;
+              align-self: flex-end;
           }
 
-          /* Adoption page */
+          /* adoption page styling */
           .adopt-main { padding: 24px 40px; }
-          .intro h1 { margin: 0 0 8px 0; font-size: 28px; }
-          .intro p { margin: 0 0 16px 0; }
+          .intro h1 {font-size: 28px; }
+          /* .intro p { margin: 0 0 16px 0; } */
 
-          .filters { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: end; background: #fff; border: 1px solid var(--sage); border-radius: 10px; padding: 12px; margin-bottom: 16px; }
+          .filters { display: flex; gap: 12px 16px; align-items: end; background: #fff; border: 1px solid var(--sage); border-radius: 10px; padding: 12px; margin-bottom: 16px; }
           .filters label { display: grid; gap: 6px; font-weight: 600; }
           .filters select { padding: 8px; border-radius: 6px; border: 1px solid #ccc; }
 
           .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 340px)); justify-content: center; gap: 16px; }
 
-          .card { background: #fff; border: 1px solid #e6e6e6; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
+          .card { background: #fff; border: 1px solid #e6e6e6; border-radius: 12px; display: flex; flex-direction: column; }
           .card__media { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; }
           .card__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
           .card__body { padding: 12px; display: flex; flex-direction: column; gap: 8px; min-height: 140px; }
-          .card__title { margin: 0; font-size: 18px; }
+          .card__title { font-size: 18px; }
           .tags { color:#555; font-size: 14px; }
-          .card .btn { align-self: flex-end; }
 
           .load-more-wrap { text-align:center; margin-top: 16px; }
 
-          /* Modal */
-          .modal__backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.45); }
-          .modal__dialog { position: fixed; left:50%; top:50%; transform: translate(-50%,-50%); background:#fff; border-radius: 12px; width: min(560px, 92vw); max-height: 86vh; overflow:auto; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+          /* modal */
+          .modal__backdrop { position: fixed; }
+          .modal__dialog { position: fixed; left:50%; top:50%; background:#fff; border-radius: 12px; overflow:auto; }
           .modal__close { position:absolute; right:10px; top:6px; border:none; background:transparent; font-size: 28px; cursor:pointer; }
           #modal-content { padding: 20px; }
      </style>
@@ -120,13 +95,13 @@
     </section>
 
     <main class="adopt-main">
-        <!-- Intro header -->
+        <!-- intro header -->
         <section class="intro">
             <h1>Find Your New Best Friend</h1>
             <p>Browse adoptable dogs and cats. Use the filters to narrow by species, size, or age group, then meet your match.</p>
         </section>
 
-        <!-- Filter bar -->
+        <!-- filter bar -->
         <section class="filters" aria-label="Filters">
             <label>
                 Species
@@ -157,7 +132,7 @@
             <button id="reset-filters" class="btn">Reset</button>
         </section>
 
-        <!-- Grid of cards -->
+        <!-- grid of pets -->
         <section>
             <div id="cards-grid" class="cards-grid" aria-live="polite"></div>
             <div class="load-more-wrap">
@@ -166,8 +141,8 @@
         </section>
     </main>
 
-    <!-- Modal -->
-    <div id="pet-modal" class="modal" style="display:none;">
+    <!-- modal -->
+    <div id="pet-modal" class="modal" >
         <div class="modal__backdrop"></div>
         <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
             <button class="modal__close" id="modal-close" aria-label="Close">×</button>
