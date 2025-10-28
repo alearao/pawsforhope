@@ -186,18 +186,7 @@
         </div>
     </footer>
 
-    <!-- Pets data now external: json/pets.json -->
-        <!-- Fallback inline data for file:// usage (when fetch is blocked by the browser) -->
-        <script id="pets-data" type="application/json">[
-            {"id":1,"name":"Luna","species":"Cat","size":"Small","ageGroup":"Adult","ageYears":2,"gender":"Female","vaccinated":true,"shortBio":"Quiet nap buddy who loves window sunbeams.","fullBio":"Luna is a calm adult cat who enjoys quiet spaces and gentle playtime. She is litter-trained and friendly with respectful kids.","image":"./cat1.jpeg"},
-            {"id":2,"name":"Milo","species":"Cat","size":"Medium","ageGroup":"Young","ageYears":1,"gender":"Male","vaccinated":true,"shortBio":"Playful pup who learns fast.","fullBio":"Milo loves walks, basic training, and squeaky toys. He does well with an active family ready for kitten energy.","image":"./cat2.jpeg"},
-            {"id":3,"name":"Willow","species":"Dog","size":"Small","ageGroup":"Senior","ageYears":10,"gender":"Female","vaccinated":true,"shortBio":"Gentle senior who loves laps.","fullBio":"Willow is a sweet senior looking for a quiet home. She enjoys soft beds and regular brushing.","image":"./dog1.jpeg"},
-            {"id":4,"name":"Buddy","species":"Dog","size":"Large","ageGroup":"Adult","ageYears":4,"gender":"Male","vaccinated":true,"shortBio":"Friendly goofball who loves fetch.","fullBio":"Buddy enjoys long walks and backyard games. House-trained and eager to please.","image":"./dog2.jpg"},
-            {"id":5,"name":"Nala","species":"Dog","size":"Small","ageGroup":"Young","ageYears":0.8,"gender":"Female","vaccinated":true,"shortBio":"Curious puppy who purrs loudly.","fullBio":"Nala is a playful puppy ready to bond. She loves feather wands and treats.","image":"./dog3.avif"},
-            {"id":6,"name":"Rocky","species":"Dog","size":"Medium","ageGroup":"Adult","ageYears":3,"gender":"Male","vaccinated":false,"shortBio":"Smart boy who loves hikes.","fullBio":"Rocky is active and affectionate. He'll thrive with structure and daily exercise.","image":"./dog4.jpeg"}
-        ]</script>
-
-        <!-- Inline adopt logic (module-free) -->
+        <!-- the script for the adopt page -->
         <script>
             const state = { allPets: [], filters: { species: 'All', size: 'All', age: 'All' } }
             const els = {
@@ -221,7 +210,7 @@
                 return `
                     <article class="card">
                         <div class="card__media">
-                            <img alt="${p.name}" src="${imgSrc}" loading="lazy" />
+                            <img alt="${p.name}" src="${imgSrc}" />
                         </div>
                         <div class="card__body">
                             <h3 class="card__title">${p.name}</h3>
@@ -243,10 +232,8 @@
                 renderCards(filtered)
             }
 
-            // No modal: pet details open on petDetails.html via the Adopt Me link
-
             function onGridClick(e) {
-                // Let the "Adopt Me" link navigate to petDetails.html?id=...
+                // redirect to the petDetails page
                 const link = e.target.closest('.adopt-btn')
                 if (link) return
             }
@@ -296,8 +283,8 @@
                 if (loaded) {
                     refresh()
                 } else {
-                    els.grid.innerHTML = '<div style="background:#fff;border:1px solid #e6e6e6;border-radius:10px;padding:16px;">Unable to load pets. If you opened this file directly, please use a local server (e.g., VS Code Live Server) or keep the inline fallback.</div>'
-                    els.loadMore.style.display = 'none'
+                    // Simple fallback message when pets data cannot be loaded
+                    els.grid.innerHTML = '<div class="no-pets" style="padding:16px;background:#fff;border:1px solid #e6e6e6;border-radius:8px;text-align:center;font-weight:600;">No animals available for adoption</div>'
                 }
             }
             init()
