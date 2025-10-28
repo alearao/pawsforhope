@@ -10,16 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* ====== Donate Page Internal Styles ====== */
-        
-        /* CSS Variables for consistency */
-        :root {
-            --terracotta: #E07A5F;
-            --sage: #81B29A;
-            --cream: #F4F1DE;
-            --brown: #3D2C2E;
-            --honey: #F2CC8F;
-        }
+        /* ====== internal styles ====== */
 
         /* Page Background */
         body {
@@ -36,46 +27,43 @@
         }
 
         .hero-section h1 {
-            font-size: 3.5rem;
+            font-size: 56px;
             margin: 0 0 20px 0;
             font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
+            font-size: 20.8px;
             max-width: 800px;
             margin: 0 auto;
             line-height: 1.8;
             font-weight: 300;
         }
 
-        /* Content Container */
+        /* content container */
         .content-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 40px 80px 40px;
         }
 
-        /* Donation Grid */
+        /* donation grid */
         .donation-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
             gap: 60px;
             margin-bottom: 60px;
         }
 
-        /* Impact Section */
+        /* impact section */
         .impact-section {
             background-color: white;
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             border: 3px solid var(--sage);
         }
 
         .impact-title {
-            font-size: 2rem;
+            font-size: 32px;
             font-weight: 700;
             color: var(--brown);
             margin-bottom: 30px;
@@ -90,12 +78,6 @@
             background-color: white;
             border-radius: 12px;
             border-left: 5px solid var(--terracotta);
-            transition: transform 0.2s ease, box-shadow 0.3s ease;
-        }
-
-        .impact-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .impact-icon {
@@ -107,21 +89,21 @@
             align-items: center;
             justify-content: center;
             margin-right: 20px;
-            font-size: 1.5rem;
+            font-size: 24px;
             color: white;
         }
 
         .impact-content h3 {
             margin: 0 0 8px 0;
             color: var(--terracotta);
-            font-size: 1.3rem;
+            font-size: 20.8px;
             font-weight: 600;
         }
 
         .impact-content p {
             margin: 0;
             color: var(--brown);
-            font-size: 1rem;
+            font-size: 16px;
             line-height: 1.5;
         }
 
@@ -130,12 +112,11 @@
             background-color: white;
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             border: 3px solid var(--terracotta);
         }
 
         .form-title {
-            font-size: 2rem;
+            font-size: 32px;
             font-weight: 700;
             color: var(--brown);
             margin-bottom: 30px;
@@ -144,7 +125,6 @@
 
         .amount-buttons {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
             margin-bottom: 25px;
         }
@@ -155,17 +135,10 @@
             background-color: white;
             color: var(--brown);
             border-radius: 10px;
-            font-size: 1.1rem;
+            font-size: 17.6px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
             font-family: 'Poppins', Arial, sans-serif;
-        }
-
-        .amount-btn:hover {
-            background-color: var(--sage);
-            color: white;
-            transform: translateY(-2px);
         }
 
         .amount-btn.selected {
@@ -183,7 +156,7 @@
             font-weight: 600;
             color: var(--brown);
             margin-bottom: 8px;
-            font-size: 1.1rem;
+            font-size: 17.6px;
         }
 
         .form-group input,
@@ -192,9 +165,8 @@
             padding: 15px;
             border: 2px solid var(--cream);
             border-radius: 10px;
-            font-size: 1rem;
+            font-size: 16px;
             font-family: 'Poppins', Arial, sans-serif;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
             box-sizing: border-box;
         }
 
@@ -202,7 +174,6 @@
         .form-group select:focus {
             outline: none;
             border-color: var(--sage);
-            box-shadow: 0 0 0 3px rgba(129, 178, 154, 0.2);
         }
 
         .required {
@@ -217,23 +188,13 @@
             color: white;
             border: none;
             border-radius: 12px;
-            font-size: 1.3rem;
+            font-size: 20.8px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Poppins', Arial, sans-serif;
             margin-top: 10px;
         }
-
-        .donate-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(224, 122, 95, 0.4);
-        }
-
-        .donate-btn:active {
-            transform: translateY(0);
-        }
-
         /* Thank You Popup */
         .popup-overlay {
             position: fixed;
@@ -241,7 +202,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0);
             display: none;
             justify-content: center;
             align-items: center;
@@ -255,25 +216,24 @@
             text-align: center;
             max-width: 500px;
             margin: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             border: 4px solid var(--sage);
         }
 
         .popup-icon {
-            font-size: 4rem;
+            font-size: 64px;
             margin-bottom: 20px;
             color: var(--terracotta);
         }
 
         .popup-title {
-            font-size: 2.5rem;
+            font-size: 40px;
             font-weight: 700;
             color: var(--brown);
             margin-bottom: 20px;
         }
 
         .popup-message {
-            font-size: 1.2rem;
+            font-size: 19.2px;
             color: var(--brown);
             line-height: 1.6;
             margin-bottom: 30px;
@@ -285,16 +245,10 @@
             border: none;
             padding: 15px 30px;
             border-radius: 25px;
-            font-size: 1.1rem;
+            font-size: 17.6px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
             font-family: 'Poppins', Arial, sans-serif;
-        }
-
-        .popup-close:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(129, 178, 154, 0.4);
         }
 
         /* Other Amount Input */
@@ -304,89 +258,6 @@
 
         .other-amount.show {
             display: block;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .donation-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .hero-section {
-                padding: 60px 20px;
-            }
-
-            .hero-section h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .content-container {
-                padding: 0 20px;
-            }
-
-            .donation-form,
-            .impact-section {
-                padding: 30px 20px;
-            }
-
-            .amount-buttons {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .popup-content {
-                padding: 40px 30px;
-                margin: 10px;
-            }
-
-            .popup-title {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .hero-section h1 {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .form-title,
-            .impact-title {
-                font-size: 1.7rem;
-            }
-
-            .amount-buttons {
-                grid-template-columns: 1fr;
-            }
-
-            .impact-item {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .impact-icon {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-
-            .popup-content {
-                padding: 30px 20px;
-            }
-
-            .popup-title {
-                font-size: 1.8rem;
-            }
-
-            .popup-icon {
-                font-size: 3rem;
-            }
         }
     </style>
 </head>
@@ -503,7 +374,7 @@
         </div>
     </div>
 
-    <!-- Thank You Popup -->
+    <!-- thank you popup -->
     <div class="popup-overlay" id="thankYouPopup">
         <div class="popup-content">
             <div class="popup-icon">🎉</div>
@@ -519,7 +390,7 @@
     <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-content">
-                <!-- About Section -->
+                <!-- about section -->
                 <div class="footer-about">
                     <a href="index.html" class="footer-logo">
                         <div class="logo-icon">🐾</div>
@@ -531,7 +402,7 @@
                     <p>Dedicated to rescuing, rehabilitating, and rehoming pets in need across our community. Every animal deserves love, care, and a forever home where they can thrive.</p>
                 </div>
 
-                <!-- Services -->
+                <!-- services -->
                 <div class="footer-section">
                     <h4>Our Services</h4>
                     <ul>
@@ -544,7 +415,7 @@
                     </ul>
                 </div>
 
-                <!-- Contact Info -->
+                <!-- contact info -->
                 <div class="footer-section">
                     <h4>Contact Info</h4>
                     <div class="contact-item">
