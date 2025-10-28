@@ -10,14 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* ====== internal styles ====== */
+        /* internal styles */
 
-        /* Page Background */
+        /* page background */
         body {
             background-color: var(--cream);
         }
         
-        /* Hero Section */
+        /* hero section */
         .hero-section {
             background: var(--sage);
             color: white;
@@ -107,7 +107,7 @@
             line-height: 1.5;
         }
 
-        /* Donation Form */
+        /* donation form */
         .donation-form {
             background-color: white;
             padding: 40px;
@@ -191,22 +191,21 @@
             font-size: 20.8px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
             font-family: 'Poppins', Arial, sans-serif;
             margin-top: 10px;
         }
-        /* Thank You Popup */
+
+        /* thank you popup */
         .popup-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0);
+            background-color: black;
             display: none;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
         }
 
         .popup-content {
@@ -251,7 +250,7 @@
             font-family: 'Poppins', Arial, sans-serif;
         }
 
-        /* Other Amount Input */
+        /* other amount input */
         .other-amount {
             display: none;
         }
@@ -262,7 +261,7 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Header -->
+    <!-- navigation header -->
     <header class="top-header">
         <a href="index.html"><img src="logo.png" alt="Paws for Hope Logo" id="logo"></a>
         <nav>
@@ -278,7 +277,7 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- hero section -->
     <section class="hero-section">
         <h1>Make a Difference</h1>
         <p class="hero-subtitle">
@@ -288,9 +287,9 @@
     </section>
 
     <div class="content-container">
-        <!-- Donation Grid -->
+        <!-- donation grid -->
         <div class="donation-grid">
-            <!-- Impact Information -->
+            <!-- impact info -->
             <div class="impact-section">
                 <h2 class="impact-title">Your Impact</h2>
                 
@@ -323,14 +322,14 @@
                 </div>
             </div>
 
-            <!-- Donation Form -->
+            <!-- donation form -->
             <div class="donation-form">
                 <h2 class="form-title">Make Your Donation</h2>
                 
                 <form id="donationForm">
-                    <!-- Amount Selection -->
+                    <!-- amount selection -->
                     <div class="form-group">
-                        <label>Select Donation Amount <span class="required">*</span></label>
+                        <label>Select Donation Amount</label>
                         <div class="amount-buttons">
                             <button type="button" class="amount-btn" data-amount="25">$25</button>
                             <button type="button" class="amount-btn" data-amount="50">$50</button>
@@ -341,26 +340,26 @@
                         </div>
                     </div>
 
-                    <!-- Other Amount Input -->
+                    <!-- other amount input -->
                     <div class="form-group other-amount" id="otherAmount">
-                        <label for="customAmount">Enter Custom Amount <span class="required">*</span></label>
+                        <label for="customAmount">Enter Custom Amount</label>
                         <input type="number" id="customAmount" name="customAmount" placeholder="Enter amount" min="1">
                     </div>
 
-                    <!-- Donor Information -->
+                    <!-- donor info -->
                     <div class="form-group">
-                        <label for="donorName">Full Name <span class="required">*</span></label>
-                        <input type="text" id="donorName" name="donorName" required>
+                        <label for="donorName">Full Name</label>
+                        <input type="text" id="donorName" name="donorName">
                     </div>
 
                     <div class="form-group">
-                        <label for="donorEmail">Email Address <span class="required">*</span></label>
-                        <input type="email" id="donorEmail" name="donorEmail" required>
+                        <label for="donorEmail">Email Address</label>
+                        <input type="email" id="donorEmail" name="donorEmail">
                     </div>
 
                     <div class="form-group">
-                        <label for="donationType">Donation Type <span class="required">*</span></label>
-                        <select id="donationType" name="donationType" required>
+                        <label for="donationType">Donation Type</label>
+                        <select id="donationType" name="donationType">
                             <option value="">Please select...</option>
                             <option value="one-time">One-Time Donation</option>
                             <option value="monthly">Monthly Recurring</option>
@@ -445,25 +444,19 @@
     </footer>
 
     <script>
-        // Amount button selection
+        // Amount button selection (shows other amount input when chosen)
         document.querySelectorAll('.amount-btn').forEach(button => {
             button.addEventListener('click', function() {
                 // Remove selected class from all buttons
-                document.querySelectorAll('.amount-btn').forEach(btn => {
-                    btn.classList.remove('selected');
-                });
-                
+                document.querySelectorAll('.amount-btn').forEach(btn => btn.classList.remove('selected'));
                 // Add selected class to clicked button
                 this.classList.add('selected');
-                
                 // Show/hide other amount input
                 const otherAmount = document.getElementById('otherAmount');
                 if (this.dataset.amount === 'other') {
                     otherAmount.classList.add('show');
-                    document.getElementById('customAmount').required = true;
                 } else {
                     otherAmount.classList.remove('show');
-                    document.getElementById('customAmount').required = false;
                     document.getElementById('customAmount').value = '';
                 }
             });
@@ -472,45 +465,10 @@
         // Form submission
         document.getElementById('donationForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Get selected amount
-            const selectedButton = document.querySelector('.amount-btn.selected');
-            const customAmount = document.getElementById('customAmount').value;
-            const donorName = document.getElementById('donorName').value.trim();
-            const donorEmail = document.getElementById('donorEmail').value.trim();
-            const donationType = document.getElementById('donationType').value;
-            
-            // Validate form
-            if (!selectedButton) {
-                alert('Please select a donation amount.');
-                return;
-            }
-            
-            if (selectedButton.dataset.amount === 'other' && (!customAmount || customAmount <= 0)) {
-                alert('Please enter a valid custom amount.');
-                return;
-            }
-            
-            if (!donorName || !donorEmail || !donationType) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-            
-            // Validate email format
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(donorEmail)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-            
-            // Show thank you popup
+            // show thank-you popup and reset form
             showPopup();
-            
-            // Reset form
             this.reset();
-            document.querySelectorAll('.amount-btn').forEach(btn => {
-                btn.classList.remove('selected');
-            });
+            document.querySelectorAll('.amount-btn').forEach(btn => btn.classList.remove('selected'));
             document.getElementById('otherAmount').classList.remove('show');
         });
 
