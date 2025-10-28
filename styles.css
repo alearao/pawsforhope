@@ -7,7 +7,7 @@
     --honey: #F2CC8F;
 }
 
-/* general */
+/* general layout */
 body {
     margin: 0;
     background-color: var(--cream);
@@ -18,10 +18,17 @@ body {
 /* header */
 .top-header {
     background-color: var(--cream);
+    border-bottom: 3px solid var(--sage);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 12px 40px;
+}
+
+/* logo */
+#logo {
+    height: 60px;
+    width: auto;
 }
 
 /* navigation */
@@ -32,11 +39,14 @@ nav ul {
 }
 
 nav a {
+    text-decoration: none;
     color: var(--brown);
     font-weight: 600;
     padding: 8px 12px;
+    border-radius: 6px;
 }
 
+/* hover & active states */
 nav a:hover {
     background-color: var(--sage);
     color: white;
@@ -47,7 +57,27 @@ nav a.active {
     color: white;
 }
 
-/* CONTACT PAGE STYLING */
+/* applying these changes to styling when screen width is 400px or less */
+@media (max-width: 400px) {
+    .top-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 24px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+        margin-top: 12px;
+    }
+
+    nav a {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+}
 
 /* hero section */
 .hero-section {
@@ -68,6 +98,7 @@ nav a.active {
             font-size: 22.4px;
             font-weight: 300;
             max-width: 800px;
+            margin: 0 auto;
             line-height: 1.6;
         }
 
@@ -87,11 +118,23 @@ nav a.active {
             color: var(--brown);
             text-align: center;
             margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background-color: var(--terracotta);
+            margin: 20px auto;
+            border-radius: 2px;
         }
 
 /* content container */
 .content-container {
     max-width: 1200px;
+    margin: 0 auto;
     padding: 0 40px 80px 40px;
 }
 
@@ -130,13 +173,27 @@ nav a.active {
     font-size: 16px;
 }
 
+.required {
+    color: var(--terracotta);
+}
+
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;
     padding: 14px;
+    border: 2px solid var(--sage);
+    border-radius: 10px;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--terracotta);
 }
 
 .form-group textarea {
@@ -149,10 +206,12 @@ nav a.active {
     padding: 16px;
     background: var(--terracotta);
     color: white;
+    border: none;
     border-radius: 10px;
-    font-size: 19px;
+    font-size: 19.2px;
     font-weight: 700;
     cursor: pointer;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* contact info */
@@ -172,9 +231,11 @@ nav a.active {
 
 .info-item {
     display: flex;
+    align-items: flex-start;
     margin-bottom: 30px;
     padding: 20px;
     background-color: var(--cream);
+    border-radius: 15px;
 }
 
 .info-icon {
@@ -185,7 +246,7 @@ nav a.active {
 .info-content h3 {
     margin: 0 0 8px 0;
     color: var(--terracotta);
-    font-size: 20px;
+    font-size: 20.8px;
 }
 
 .info-content p {
@@ -195,7 +256,54 @@ nav a.active {
     font-size: 16px;
 }
 
+/* change styling for when the screen width is 768px and under */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 40px;
+    }
+
+    .hero-subtitle {
+        font-size: 17.6px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .content-container {
+        padding: 0 20px 40px 20px;
+    }
+
+    .contact-form,
+    .contact-info {
+        padding: 30px 20px;
+    }
+}
+
+/* custom styling for when screen width is 400px or under */
+@media (max-width: 400px) {
+    .hero-section {
+        padding: 60px 20px;
+    }
+
+    .hero-section h1 {
+        font-size: 32px;
+    }
+
+    .form-title,
+    .info-title {
+        font-size: 24px;
+    }
+
+    .info-icon {
+        font-size: 32px;
+    }
+}
+
+
 .main-footer {
+    background: var(--brown);
     color: white;
     padding: 60px 0 20px;
     margin-top: 80px;
@@ -214,34 +322,37 @@ nav a.active {
     margin-bottom: 40px;
 }
 
-/* footer logo section */
+/* Footer Logo Section */
 .footer-logo {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    text-decoration: none;
 }
 
 .footer-logo .logo-icon {
     width: 60px;
     height: 60px;
+    background: var(--sage);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 15px;
-    font-size: 32px;
+    font-size: 28.8px;
     color: white;
 }
 
 .footer-logo .logo-text h3 {
     color: white;
     font-size: 24px;
+    margin: 0;
     font-weight: 700;
 }
 
 .footer-logo .logo-text span {
     color: var(--sage);
-    font-size: 16px;
+    font-size: 14.4px;
     font-weight: 400;
 }
 
@@ -249,23 +360,31 @@ nav a.active {
     color: #ccc;
     line-height: 1.7;
     margin-bottom: 20px;
-    font-size: 16px;
+    font-size: 15.2px;
 }
 
-/* Footer Links */
+/* footer links */
 .footer-section h4 {
     color: var(--sage);
-    font-size: 19px;
+    font-size: 19.2px;
     margin-bottom: 20px;
     font-weight: 600;
 }
 
 .footer-section ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .footer-section ul li {
     margin-bottom: 12px;
+}
+
+.footer-section ul li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 15.2px;
 }
 
 .footer-section ul li a:hover {
@@ -283,12 +402,14 @@ nav a.active {
 .contact-item .icon {
     width: 20px;
     margin-right: 12px;
-    font-size: 17px;
+    font-size: 17.6px;
     color: var(--sage);
+    flex-shrink: 0;
 }
 
 /* footer bottom */
 .footer-bottom {
+    border-top: 1px solid #444;
     padding-top: 30px;
     display: flex;
     justify-content: space-between;
@@ -299,7 +420,8 @@ nav a.active {
 
 .footer-bottom p {
     color: #999;
-    font-size: 16px;
+    font-size: 14.4px;
+    margin: 0;
 }
 
 .footer-bottom-links {
@@ -309,9 +431,72 @@ nav a.active {
 
 .footer-bottom-links a {
     color: #999;
-    font-size: 16px;
+    text-decoration: none;
+    font-size: 14.4px;
 }
 
 .footer-bottom-links a:hover {
     color: var(--sage);
+}
+
+/* styling if screen width is 768px or under */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+    
+    .footer-container {
+        padding: 0 20px;
+    }
+    
+    .main-footer {
+        padding: 40px 0 20px;
+        margin-top: 60px;
+    }
+}
+
+/* styling if screen width is 400px or under */
+@media (max-width: 400px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .footer-bottom-links {
+        justify-content: center;
+    }
+    
+    .footer-logo .logo-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+    
+    .footer-logo .logo-text h3 {
+        font-size: 20.8px;
+    }
+}
+
+@media (max-width: 400px) {
+    .footer-container {
+        padding: 0 15px;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    .contact-item .icon {
+        margin-bottom: 5px;
+        margin-right: 0;
+    }
 }
