@@ -55,11 +55,6 @@
         .pet-facts { list-style:none; padding:0; margin:0 0 12px 0; display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 6px 12px; }
         .pet-facts li { background:#fff; border:1px solid #e6e6e6; border-radius:8px; padding:8px 10px; }
         .actions { margin-top: 8px; }
-        .related { margin-top: 28px; }
-        .related__row { display:flex; gap: 12px; overflow-x: auto; padding-bottom: 6px; }
-        .related__card { min-width: 220px; background:#fff; border:1px solid #e6e6e6; border-radius: 10px; overflow:hidden; cursor:pointer; text-decoration:none; color: inherit; }
-        .related__card img { width:100%; aspect-ratio: 4/3; object-fit:cover; display:block; }
-        .related__body { padding:10px; }
         @media (max-width: 900px) { .pet-hero { grid-template-columns: 1fr; } }
     
     </style>
@@ -111,11 +106,6 @@
                     <a id="apply-btn" class="btn" href="#">Apply to Adopt</a>
                 </div>
             </div>
-        </section>
-
-        <section class="related" aria-label="Related pets">
-            <h2>Related Pets</h2>
-            <div class="related__row" id="related-row"></div>
         </section>
     </main>
 
@@ -197,7 +187,6 @@
             prev: document.getElementById('nav-prev'),
             next: document.getElementById('nav-next'),
             apply: document.getElementById('apply-btn'),
-            relatedRow: document.getElementById('related-row'),
         }
 
         const state = { allPets: [], pet: null, images: [], idx: 0 }
@@ -240,18 +229,6 @@
             // Apply button
             const q = new URLSearchParams({ pet: p.name }).toString()
             els.apply.href = `contact.html?${q}`
-
-            // Related
-            const related = state.allPets.filter(x => x.id !== p.id && x.species === p.species).slice(0,3)
-            els.relatedRow.innerHTML = related.map(r => `
-                <a class="related__card" href="petDetails.html?id=${r.id}">
-                    <img alt="${r.name}" src="${r.image}" />
-                    <div class="related__body">
-                        <strong>${r.name}</strong><br/>
-                        <span class="tags">${r.species} • ${r.ageGroup}</span>
-                    </div>
-                </a>
-            `).join('')
         }
 
         function getParamPet(pets) {
