@@ -250,41 +250,16 @@
                 })
             }
 
-            // Bootstrap: prefer external fetch; fall back to inline JSON for file:// usage
+            // tries to fetch pets.json and shows a simple message if it fails
             async function init(){
-                let loaded = false
-
-                // If opened as a local file, try the inline fallback first (fetch is usually blocked on file://)
-                if (location.protocol === 'file:') {
-                    try {
-                        const raw = document.getElementById('pets-data')?.textContent?.trim()
-                        if (raw) {
-                            state.allPets = JSON.parse(raw)
-                            loaded = true
-                        }
-                    } catch (e) {
-                        console.warn('Inline pets-data fallback failed to parse:', e)
-                    }
-                }
-
-                // Otherwise (or if fallback not used), try fetching the JSON file
-                if (!loaded) {
-                    try {
-                        const res = await fetch('json/pets.json', { cache: 'no-store' })
-                        if (!res.ok) throw new Error(`HTTP ${res.status}`)
-                        state.allPets = await res.json()
-                        loaded = true
-                    } catch (e) {
-                        console.error('Failed to load json/pets.json', e)
-                    }
-                }
-
-                wireEvents()
-                if (loaded) {
+                try {
+                    const res = await fetch('json/pets.json')
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+                    state.allPets = await res.json()
+                    wireEvents()
                     refresh()
-                } else {
-                    // Simple fallback message when pets data cannot be loaded
-                    els.grid.innerHTML = '<div class="no-pets" style="padding:16px;background:#fff;border:1px solid #e6e6e6;border-radius:8px;text-align:center;font-weight:600;">No animals available for adoption</div>'
+                } catch (e) {
+                    els.grid.innerHTML = '<div class="no-pets">No animals available for adoption</div>'
                 }
             }
             init()
