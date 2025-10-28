@@ -62,13 +62,6 @@
           .card__title { font-size: 18px; }
           .tags { color:#555; font-size: 14px; }
 
-          .load-more-wrap { text-align:center; margin-top: 16px; }
-
-          /* modal */
-          .modal__backdrop { position: fixed; }
-          .modal__dialog { position: fixed; left:50%; top:50%; background:#fff; border-radius: 12px; overflow:auto; }
-          .modal__close { position:absolute; right:10px; top:6px; border:none; background:transparent; font-size: 28px; cursor:pointer; }
-          #modal-content { padding: 20px; }
      </style>
 </head>
 <body>
@@ -135,25 +128,14 @@
         <!-- grid of pets -->
         <section>
             <div id="cards-grid" class="cards-grid" aria-live="polite"></div>
-            <div class="load-more-wrap">
-                <button id="load-more" class="btn secondary">Load More</button>
-            </div>
+            <!-- all pet cards -->
         </section>
     </main>
-
-    <!-- modal -->
-    <div id="pet-modal" class="modal" >
-        <div class="modal__backdrop"></div>
-        <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-            <button class="modal__close" id="modal-close" aria-label="Close">×</button>
-            <div id="modal-content"></div>
-        </div>
-    </div>
 
      <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-content">
-                <!-- About Section -->
+                <!-- about section -->
                 <div class="footer-about">
                     <a href="index.html" class="footer-logo">
                         <div class="logo-icon">🐾</div>
@@ -165,7 +147,7 @@
                     <p>Dedicated to rescuing, rehabilitating, and rehoming pets in need across our community. Every animal deserves love, care, and a forever home where they can thrive.</p>
                 </div>
 
-                <!-- Services -->
+                <!-- services -->
                 <div class="footer-section">
                     <h4>Our Services</h4>
                     <ul>
@@ -175,7 +157,7 @@
                     </ul>
                 </div>
 
-                <!-- Contact Info -->
+                <!-- contact info -->
                 <div class="footer-section">
                     <h4>Contact Info</h4>
                     <div class="contact-item">
@@ -197,17 +179,14 @@
                 </div>
             </div>
 
-            <!-- Footer Bottom -->
+            <!-- footer bottom -->
             <div class="footer-bottom">
                 <p>&copy; 2025 Paws for Hope. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-        <!-- Scripts -->
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    
-        <!-- Pets data now external: json/pets.json -->
+    <!-- Pets data now external: json/pets.json -->
         <!-- Fallback inline data for file:// usage (when fetch is blocked by the browser) -->
         <script id="pets-data" type="application/json">[
             {"id":1,"name":"Luna","species":"Cat","size":"Small","ageGroup":"Adult","ageYears":2,"gender":"Female","vaccinated":true,"shortBio":"Quiet nap buddy who loves window sunbeams.","fullBio":"Luna is a calm adult cat who enjoys quiet spaces and gentle playtime. She is litter-trained and friendly with respectful kids.","image":"./cat1.jpeg"},
@@ -220,17 +199,13 @@
 
         <!-- Inline adopt logic (module-free) -->
         <script>
-            const state = { allPets: [], filters: { species: 'All', size: 'All', age: 'All' }, visibleCount: 6 }
+            const state = { allPets: [], filters: { species: 'All', size: 'All', age: 'All' } }
             const els = {
                 grid: document.getElementById('cards-grid'),
                 species: document.getElementById('filter-species'),
                 size: document.getElementById('filter-size'),
                 age: document.getElementById('filter-age'),
-                reset: document.getElementById('reset-filters'),
-                loadMore: document.getElementById('load-more'),
-                modal: document.getElementById('pet-modal'),
-                modalContent: document.getElementById('modal-content'),
-                modalClose: document.getElementById('modal-close')
+                reset: document.getElementById('reset-filters')
             }
 
             function applyFilters(pets, { species, size, age }) {
@@ -258,39 +233,17 @@
                 `
             }
 
-            function renderCards(pets, { append = false } = {}) {
+            function renderCards(pets) {
                 const html = pets.map(cardTemplate).join('')
-                if (append) {
-                    els.grid.insertAdjacentHTML('beforeend', html)
-                } else {
-                    els.grid.innerHTML = html
-                }
+                els.grid.innerHTML = html
             }
 
             function refresh() {
                 const filtered = applyFilters(state.allPets, state.filters)
-                const slice = filtered.slice(0, state.visibleCount)
-                renderCards(slice)
-                els.loadMore.style.display = state.visibleCount < filtered.length ? 'inline-block' : 'none'
+                renderCards(filtered)
             }
 
-            function openModal(pet) {
-                const vacc = pet.vaccinated ? 'Yes' : 'No'
-                els.modalContent.innerHTML = `
-                    <h2 id="modal-title">${pet.name}</h2>
-                    <img alt="${pet.name}" src="${pet.image}" style="width:100%; max-height:280px; object-fit:cover; border-radius:8px;" />
-                    <p style="margin-top:10px;">${pet.fullBio}</p>
-                    <ul>
-                        <li><strong>Gender:</strong> ${pet.gender}</li>
-                        <li><strong>Vaccinated:</strong> ${vacc}</li>
-                        <li><strong>Details:</strong> ${pet.species} • ${pet.size} • ${pet.ageGroup} (${pet.ageYears} yrs)</li>
-                    </ul>
-                    <button class="btn" id="contact-cta">Contact to Adopt</button>
-                `
-                window.$('#pet-modal').fadeIn(150)
-            }
-
-            function closeModal() { window.$('#pet-modal').fadeOut(150) }
+            // No modal: pet details open on petDetails.html via the Adopt Me link
 
             function onGridClick(e) {
                 // Let the "Adopt Me" link navigate to petDetails.html?id=...
@@ -300,25 +253,14 @@
 
             function wireEvents() {
                 els.grid.addEventListener('click', onGridClick)
-                els.species.addEventListener('change', () => { state.filters.species = els.species.value; state.visibleCount = 6; refresh() })
-                els.size.addEventListener('change', () => { state.filters.size = els.size.value; state.visibleCount = 6; refresh() })
-                els.age.addEventListener('change', () => { state.filters.age = els.age.value; state.visibleCount = 6; refresh() })
+                els.species.addEventListener('change', () => { state.filters.species = els.species.value; refresh() })
+                els.size.addEventListener('change', () => { state.filters.size = els.size.value; refresh() })
+                els.age.addEventListener('change', () => { state.filters.age = els.age.value; refresh() })
                 els.reset.addEventListener('click', () => {
                     state.filters = { species: 'All', size: 'All', age: 'All' }
                     els.species.value = 'All'; els.size.value = 'All'; els.age.value = 'All'
-                    state.visibleCount = 6
                     refresh()
                 })
-                els.loadMore.addEventListener('click', () => {
-                    const filtered = applyFilters(state.allPets, state.filters)
-                    const start = state.visibleCount
-                    state.visibleCount += 3
-                    const nextSlice = filtered.slice(start, state.visibleCount)
-                    renderCards(nextSlice, { append: true })
-                    els.loadMore.style.display = state.visibleCount < filtered.length ? 'inline-block' : 'none'
-                })
-                els.modalClose.addEventListener('click', closeModal)
-                els.modal.addEventListener('click', (e) => { if (e.target.classList.contains('modal__backdrop')) closeModal() })
             }
 
             // Bootstrap: prefer external fetch; fall back to inline JSON for file:// usage
