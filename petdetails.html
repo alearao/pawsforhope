@@ -11,49 +11,35 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+        /* color palette */
         :root {
-           --terracotta: #E07A5F;
-           --sage: #81B29A;
-           --cream: #F4F1DE;
-           --brown: #3D2C2E;
-           --honey: #F2CC8F;
+            --terracotta: #E07A5F;
+            --sage: #81B29A;
+            --cream: #F4F1DE;
+            --brown: #3D2C2E;
+            --honey: #F2CC8F;
         }
 
         /* General */
-        body { margin: 0; background-color: var(--cream); font-family: "Poppins", Arial, sans-serif; color: var(--brown); }
+        body { background-color: var(--cream); font-family: "Poppins", Arial, sans-serif; color: var(--brown); }
 
         /* Header + Nav */
-        .top-header { background-color: var(--cream); border-bottom: 3px solid var(--sage); display:flex; align-items:center; justify-content:space-between; padding:12px 40px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-        #logo { height: 60px; width: auto; }
-        nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 24px; }
-        nav a { text-decoration: none; color: var(--brown); font-weight: 600; padding: 8px 12px; border-radius: 6px; transition: background-color 0.3s ease, color 0.3s ease; }
-        nav a:hover { background-color: var(--sage); color: #fff; }
-        nav a.active { background-color: var(--terracotta); color: #fff; }
-        @media (max-width: 768px) {
-           .top-header { flex-direction: column; align-items: flex-start; padding: 16px 24px; }
-           nav ul { flex-direction: column; width: 100%; gap: 12px; margin-top: 12px; }
-           nav a { display: block; width: 100%; text-align: left; }
-        }
+        .top-header { background-color: var(--cream); border-bottom: 3px solid var(--sage); display:flex; align-items:center; justify-content:space-between; padding:12px 40px; }
 
         /* Buttons */
-        .btn { padding: 8px 14px; border-radius: 6px; border: 1px solid var(--terracotta); background: var(--terracotta); color:#fff; cursor: pointer; text-decoration: none; display:inline-block; }
+        .btn { padding: 8px 14px; border-radius: 6px; border: 1px solid var(--terracotta); background: var(--terracotta); color:#fff; cursor: pointer; display:inline-block; }
         .btn.secondary { border-color: var(--sage); background: var(--sage); }
-        .btn:hover { filter: brightness(0.95); }
 
-        /* Details page extras */
+        /* pet details page styling */
         .details-main { padding: 24px 40px; }
         .pet-hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: start; }
         .carousel { position: relative; background:#fff; border:1px solid #e6e6e6; border-radius:12px; overflow:hidden; }
         .carousel__frame { width:100%; aspect-ratio: 4/3; overflow:hidden; }
         .carousel__frame img { width:100%; height:100%; object-fit: cover; display:block; }
-        .carousel__nav { position:absolute; top:50%; transform: translateY(-50%); border:none; background: rgba(0,0,0,0.45); color:#fff; width:34px; height:34px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; }
-        .carousel__nav.prev { left:8px; }
-        .carousel__nav.next { right:8px; }
-        .pet-summary h1 { margin: 0 0 8px 0; font-size: 28px; }
         .chips { display:flex; flex-wrap:wrap; gap:8px; margin: 8px 0 12px; }
-        .chip { background: var(--honey); color: #3D2C2E; padding:4px 10px; border-radius: 999px; font-size: 13px; border: 1px solid rgba(0,0,0,0.06); }
+        .chip { background: var(--honey); color: #3D2C2E; padding:4px 10px; border-radius: 999px; font-size: 13px; border: 1px solid black; }
         .pet-facts { list-style:none; padding:0; margin:0 0 12px 0; display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 6px 12px; }
-        .pet-facts li { background:#fff; border:1px solid #e6e6e6; border-radius:8px; padding:8px 10px; }
+        .pet-facts li { background:#fff; border:1px solid white; border-radius:8px; padding:8px 10px; }
         .actions { margin-top: 8px; }
         @media (max-width: 900px) { .pet-hero { grid-template-columns: 1fr; } }
     
@@ -61,7 +47,7 @@
 </head>
 <body>
     <header class="top-header">
-        <a href="index.html"><img src="logo.png" alt="Paws for Hope Logo" id="logo"></a>
+        <a href="index.html"><img src="logo.png" id="logo"></a>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -89,7 +75,7 @@
                 <div class="carousel__frame">
                     <img id="hero-img" alt="Pet photo" src="" />
                 </div>
-                <button class="carousel__nav next" id="nav-next" aria-label="Next photo">&#10095;</button>
+                <button class="carousel__nav next" id="nav-next">&#10095;</button>
             </div>
             <div class="pet-summary">
                 <h1 id="pet-name">Loading…</h1>
@@ -112,7 +98,7 @@
     <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-content">
-                <!-- About Section -->
+                <!-- about section -->
                 <div class="footer-about">
                     <a href="index.html" class="footer-logo">
                         <div class="logo-icon">🐾</div>
@@ -124,7 +110,7 @@
                     <p>Dedicated to rescuing, rehabilitating, and rehoming pets in need across our community. Every animal deserves love, care, and a forever home where they can thrive.</p>
                 </div>
 
-                <!-- Services -->
+                <!-- services -->
                 <div class="footer-section">
                     <h4>Our Services</h4>
                     <ul>
@@ -134,7 +120,7 @@
                     </ul>
                 </div>
 
-                <!-- Contact Info -->
+                <!-- contact info -->
                 <div class="footer-section">
                     <h4>Contact Info</h4>
                     <div class="contact-item">
@@ -156,7 +142,7 @@
                 </div>
             </div>
 
-            <!-- Footer Bottom -->
+            <!-- footer bottom -->
             <div class="footer-bottom">
                 <p>&copy; 2025 Paws for Hope. All rights reserved.</p>
             </div>
