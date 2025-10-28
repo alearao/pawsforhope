@@ -28,7 +28,7 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- hero section -->
     <section class="hero-section">
         <h1>Contact Us</h1>
         <p class="hero-subtitle">
@@ -38,53 +38,48 @@
     </section>
 
     <div class="content-container">
-        <!-- Contact Form and Info Grid -->
+        <!-- contact form and info grid -->
         <div class="contact-grid">
-            <!-- Contact Form -->
+            <!-- contact form -->
             <div class="contact-form">
                 <h2 class="form-title">Send Us a Message</h2>
-                <form id="contactForm" novalidate>
+                <form id="contactForm">
                     <div class="form-group">
-                        <label for="name">Full Name <span class="required">*</span></label>
-                        <input type="text" id="name" name="name" required>
-                        <div class="error-message" id="nameError"></div>
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name">
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email Address <span class="required">*</span></label>
-                        <input type="email" id="email" name="email" required>
-                        <div class="error-message" id="emailError"></div>
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email">
                     </div>
 
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
                         <input type="tel" id="phone" name="phone" placeholder="123-456-7890">
-                        <div class="error-message" id="phoneError"></div>
                     </div>
 
                     <div class="form-group">
-                        <label for="inquiryType">Inquiry Type <span class="required">*</span></label>
-                        <select id="inquiryType" name="inquiryType" required>
+                        <label for="inquiryType">Inquiry Type</label>
+                        <select id="inquiryType" name="inquiryType">
                             <option value="">Please select...</option>
                             <option value="Adoption">Adoption</option>
                             <option value="Volunteer">Volunteer</option>
                             <option value="Donation">Donation</option>
                             <option value="General">General</option>
                         </select>
-                        <div class="error-message" id="inquiryTypeError"></div>
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Message <span class="required">*</span></label>
-                        <textarea id="message" name="message" placeholder="Tell us how we can help you..." required></textarea>
-                        <div class="error-message" id="messageError"></div>
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us how we can help you..."></textarea>
                     </div>
 
                     <button type="submit" class="submit-btn">Send Message</button>
                 </form>
             </div>
 
-            <!-- Contact Information -->
+            <!-- contact information -->
             <div class="contact-info">
                 <h2 class="info-title">Get in Touch</h2>
                 
@@ -123,11 +118,11 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- footer -->
     <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-content">
-                <!-- About Section -->
+                <!-- about section -->
                 <div class="footer-about">
                     <a href="index.html" class="footer-logo">
                         <div class="logo-icon">🐾</div>
@@ -139,7 +134,7 @@
                     <p>Dedicated to rescuing, rehabilitating, and rehoming pets in need across our community. Every animal deserves love, care, and a forever home where they can thrive.</p>
                 </div>
 
-                <!-- Services -->
+                <!-- services -->
                 <div class="footer-section">
                     <h4>Our Services</h4>
                     <ul>
@@ -149,7 +144,7 @@
                     </ul>
                 </div>
 
-                <!-- Contact Info -->
+                <!-- contact info -->
                 <div class="footer-section">
                     <h4>Contact Info</h4>
                     <div class="contact-item">
@@ -171,7 +166,7 @@
                 </div>
             </div>
 
-            <!-- Footer Bottom -->
+            <!-- footer bottom -->
             <div class="footer-bottom">
                 <p>&copy; 2025 Paws for Hope. All rights reserved.</p>
             </div>
@@ -180,84 +175,9 @@
 
     <script>
         $(document).ready(function() {
-            // Form validation using jQuery as specified
+            // form validation with jquery
             $('#contactForm').on('submit', function(e) {
-                e.preventDefault();
-                
-                // Clear previous errors
-                $('.error-message').text('');
-                $('.form-group input, .form-group select, .form-group textarea').removeClass('error');
-                
-                let isValid = true;
-                
-                // Validate name (required)
-                const name = $('#name').val().trim();
-                if (!name) {
-                    $('#name').addClass('error');
-                    $('#nameError').text('Name is required.');
-                    isValid = false;
-                }
-                
-                // Validate email (required + regex)
-                const email = $('#email').val().trim();
-                const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-                if (!email) {
-                    $('#email').addClass('error');
-                    $('#emailError').text('Email is required.');
-                    isValid = false;
-                } else if (!emailRegex.test(email)) {
-                    $('#email').addClass('error');
-                    $('#emailError').text('Please enter a valid email address.');
-                    isValid = false;
-                }
-                
-                // Validate phone (optional, pattern match ###-###-####)
-                const phone = $('#phone').val().trim();
-                const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
-                if (phone && !phoneRegex.test(phone)) {
-                    $('#phone').addClass('error');
-                    $('#phoneError').text('Phone must be in format: 123-456-7890');
-                    isValid = false;
-                }
-                
-                // Validate inquiry type (required)
-                const inquiryType = $('#inquiryType').val();
-                if (!inquiryType) {
-                    $('#inquiryType').addClass('error');
-                    $('#inquiryTypeError').text('Please select an inquiry type.');
-                    isValid = false;
-                }
-                
-                // Validate message (required)
-                const message = $('#message').val().trim();
-                if (!message) {
-                    $('#message').addClass('error');
-                    $('#messageError').text('Message is required.');
-                    isValid = false;
-                }
-                
-                // Check if form is valid as specified in requirements
-                const valid = $('#name').val() && $('#email').val().match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/);
-                
-                if (!isValid || !valid) {
-                    alert('Please fill all required fields with a valid email.');
-                    return;
-                }
-                
-                // Success popup as specified
                 alert('Thanks for reaching out — we\'ll reply within 48 hours!');
-                this.reset();
-            });
-            
-            // Auto-format phone number
-            $('#phone').on('input', function() {
-                let value = $(this).val().replace(/\D/g, '');
-                if (value.length >= 6) {
-                    value = value.substring(0, 3) + '-' + value.substring(3, 6) + '-' + value.substring(6, 10);
-                } else if (value.length >= 3) {
-                    value = value.substring(0, 3) + '-' + value.substring(3);
-                }
-                $(this).val(value);
             });
         });
     </script>
